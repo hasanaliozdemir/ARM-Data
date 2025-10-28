@@ -1,0 +1,198 @@
+Entity,Code,Year,is_glass_country
+Afghanistan,AFG,2024,Both
+Albania,ALB,2024,Neither
+Algeria,DZA,2024,AMR only
+Andorra,AND,2024,Neither
+Angola,AGO,2024,AMR only
+Antigua and Barbuda,ATG,2024,Neither
+Argentina,ARG,2024,AMR only
+Armenia,ARM,2024,AMC only
+Australia,AUS,2024,AMR only
+Austria,AUT,2024,Both
+Azerbaijan,AZE,2024,Neither
+Bahamas,BHS,2024,Neither
+Bahrain,BHR,2024,Both
+Bangladesh,BGD,2024,Both
+Barbados,BRB,2024,Neither
+Belarus,BLR,2024,AMC only
+Belgium,BEL,2024,Both
+Belize,BLZ,2024,Neither
+Benin,BEN,2024,Both
+Bhutan,BTN,2024,Both
+Bolivia,BOL,2024,Neither
+Bosnia and Herzegovina,BIH,2024,AMR only
+Botswana,BWA,2024,Both
+Brazil,BRA,2024,AMR only
+Brunei,BRN,2024,Both
+Bulgaria,BGR,2024,Neither
+Burkina Faso,BFA,2024,Both
+Burundi,BDI,2024,Both
+Cambodia,KHM,2024,AMR only
+Cameroon,CMR,2024,Both
+Canada,CAN,2024,Both
+Cape Verde,CPV,2024,AMR only
+Central African Republic,CAF,2024,AMR only
+Chad,TCD,2024,AMR only
+Chile,CHL,2024,Neither
+China,CHN,2024,Neither
+Colombia,COL,2024,Both
+Comoros,COM,2024,Neither
+Congo,COG,2024,Both
+Cook Islands,COK,2024,Neither
+Costa Rica,CRI,2024,Neither
+Cote d'Ivoire,CIV,2024,Both
+Croatia,HRV,2024,Both
+Cuba,CUB,2024,Neither
+Cyprus,CYP,2024,Both
+Czechia,CZE,2024,Both
+Democratic Republic of Congo,COD,2024,AMR only
+Denmark,DNK,2024,Both
+Djibouti,DJI,2024,AMR only
+Dominica,DMA,2024,Neither
+Dominican Republic,DOM,2024,Neither
+East Timor,TLS,2024,Both
+Ecuador,ECU,2024,Both
+Egypt,EGY,2024,Both
+El Salvador,SLV,2024,Neither
+Equatorial Guinea,GNQ,2024,Neither
+Eritrea,ERI,2024,AMR only
+Estonia,EST,2024,Both
+Eswatini,SWZ,2024,AMR only
+Ethiopia,ETH,2024,Both
+Fiji,FJI,2024,Neither
+Finland,FIN,2024,Both
+France,FRA,2024,Both
+Gabon,GAB,2024,Both
+Gambia,GMB,2024,AMR only
+Georgia,GEO,2024,Both
+Germany,DEU,2024,Both
+Ghana,GHA,2024,AMR only
+Greece,GRC,2024,AMR only
+Grenada,GRD,2024,Neither
+Guatemala,GTM,2024,Neither
+Guinea,GIN,2024,AMR only
+Guinea-Bissau,GNB,2024,Neither
+Guyana,GUY,2024,Neither
+Haiti,HTI,2024,Neither
+Honduras,HND,2024,AMC only
+Hong Kong,HKG,2024,Both
+Hungary,HUN,2024,AMC only
+Iceland,ISL,2024,Both
+India,IND,2024,Both
+Indonesia,IDN,2024,Both
+Iran,IRN,2024,Both
+Iraq,IRQ,2024,Both
+Ireland,IRL,2024,Both
+Israel,ISR,2024,Neither
+Italy,ITA,2024,Both
+Jamaica,JAM,2024,Neither
+Japan,JPN,2024,AMR only
+Jordan,JOR,2024,Both
+Kazakhstan,KAZ,2024,Neither
+Kenya,KEN,2024,Both
+Kiribati,KIR,2024,Neither
+Kosovo,OWID_KOS,2024,AMR only
+Kuwait,KWT,2024,Both
+Kyrgyzstan,KGZ,2024,Neither
+Laos,LAO,2024,Both
+Latvia,LVA,2024,Both
+Lebanon,LBN,2024,AMR only
+Lesotho,LSO,2024,Both
+Liberia,LBR,2024,AMR only
+Libya,LBY,2024,Both
+Lithuania,LTU,2024,Both
+Luxembourg,LUX,2024,AMR only
+Madagascar,MDG,2024,AMR only
+Malawi,MWI,2024,AMR only
+Malaysia,MYS,2024,Both
+Maldives,MDV,2024,Both
+Mali,MLI,2024,Both
+Malta,MLT,2024,Both
+Marshall Islands,MHL,2024,Neither
+Mauritania,MRT,2024,AMR only
+Mauritius,MUS,2024,AMR only
+Mexico,MEX,2024,Neither
+Micronesia (country),FSM,2024,Neither
+Moldova,MDA,2024,Both
+Monaco,MCO,2024,Neither
+Mongolia,MNG,2024,AMC only
+Montenegro,MNE,2024,AMC only
+Morocco,MAR,2024,AMR only
+Mozambique,MOZ,2024,AMR only
+Myanmar,MMR,2024,AMR only
+Namibia,NAM,2024,AMR only
+Nauru,NRU,2024,Neither
+Nepal,NPL,2024,Both
+Netherlands,NLD,2024,AMR only
+New Zealand,NZL,2024,Neither
+Nicaragua,NIC,2024,Neither
+Niger,NER,2024,AMR only
+Nigeria,NGA,2024,Both
+Niue,NIU,2024,Neither
+North Korea,PRK,2024,AMR only
+North Macedonia,MKD,2024,AMR only
+Norway,NOR,2024,Both
+Oman,OMN,2024,Both
+Pakistan,PAK,2024,Both
+Palau,PLW,2024,Neither
+Palestine,PSE,2024,Both
+Panama,PAN,2024,Neither
+Papua New Guinea,PNG,2024,Both
+Paraguay,PRY,2024,Neither
+Peru,PER,2024,Both
+Philippines,PHL,2024,AMR only
+Poland,POL,2024,Both
+Portugal,PRT,2024,AMC only
+Qatar,QAT,2024,Both
+Romania,ROU,2024,AMC only
+Russia,RUS,2024,Both
+Rwanda,RWA,2024,Both
+Saint Kitts and Nevis,KNA,2024,Neither
+Saint Lucia,LCA,2024,Neither
+Saint Vincent and the Grenadines,VCT,2024,Neither
+Samoa,WSM,2024,Neither
+San Marino,SMR,2024,Neither
+Sao Tome and Principe,STP,2024,AMR only
+Saudi Arabia,SAU,2024,Both
+Senegal,SEN,2024,Both
+Serbia,SRB,2024,Neither
+Seychelles,SYC,2024,AMR only
+Sierra Leone,SLE,2024,Both
+Singapore,SGP,2024,Both
+Slovakia,SVK,2024,Neither
+Slovenia,SVN,2024,AMC only
+Solomon Islands,SLB,2024,Neither
+Somalia,SOM,2024,Both
+South Africa,ZAF,2024,Both
+South Korea,KOR,2024,Both
+South Sudan,SSD,2024,AMC only
+Spain,ESP,2024,AMC only
+Sri Lanka,LKA,2024,AMR only
+Sudan,SDN,2024,Both
+Suriname,SUR,2024,Neither
+Sweden,SWE,2024,Both
+Switzerland,CHE,2024,Both
+Syria,SYR,2024,Both
+Tajikistan,TJK,2024,Both
+Tanzania,TZA,2024,Both
+Thailand,THA,2024,AMR only
+Togo,TGO,2024,AMR only
+Tonga,TON,2024,Neither
+Trinidad and Tobago,TTO,2024,AMR only
+Tunisia,TUN,2024,Both
+Turkey,TUR,2024,AMR only
+Turkmenistan,TKM,2024,Neither
+Tuvalu,TUV,2024,Neither
+Uganda,UGA,2024,Both
+Ukraine,UKR,2024,Both
+United Arab Emirates,ARE,2024,Both
+United Kingdom,GBR,2024,Both
+United States,USA,2024,AMR only
+Uruguay,URY,2024,Neither
+Uzbekistan,UZB,2024,Neither
+Vanuatu,VUT,2024,Neither
+Venezuela,VEN,2024,Neither
+Vietnam,VNM,2024,Both
+Yemen,YEM,2024,Both
+Zambia,ZMB,2024,Both
+Zimbabwe,ZWE,2024,AMR only

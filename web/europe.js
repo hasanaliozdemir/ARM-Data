@@ -6,7 +6,7 @@ let chart = null;
 // Load and parse CSV data
 async function loadData() {
     try {
-        const response = await fetch('/final_model/future_predictions_2025_2030.csv');
+        const response = await fetch('final_model/future_predictions_2025_2030.csv');
         const csvText = await response.text();
         allData = parseCSV(csvText);
         populateCountryFilter();
@@ -120,11 +120,15 @@ function updateChart() {
                 title: {
                     display: true,
                     text: 'Antimicrobial Resistance Trends 2025-2030',
-                    font: { size: 18, weight: 'bold' }
+                    font: { size: 18, weight: 'bold' },
+                    color: '#ffffff'
                 },
                 legend: {
                     display: true,
-                    position: 'right'
+                    position: 'right',
+                    labels: {
+                        color: 'rgba(255, 255, 255, 0.8)'
+                    }
                 }
             },
             scales: {
@@ -133,22 +137,34 @@ function updateChart() {
                     title: {
                         display: true,
                         text: 'Year',
-                        font: { weight: 'bold' }
+                        font: { weight: 'bold' },
+                        color: 'rgba(255, 255, 255, 0.7)'
                     },
                     min: 2025,
                     max: 2030,
                     ticks: {
-                        stepSize: 1
+                        stepSize: 1,
+                        color: 'rgba(255, 255, 255, 0.6)'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
                     }
                 },
                 y: {
                     title: {
                         display: true,
                         text: 'Resistance (%)',
-                        font: { weight: 'bold' }
+                        font: { weight: 'bold' },
+                        color: 'rgba(255, 255, 255, 0.7)'
                     },
                     min: 0,
-                    max: 100
+                    max: 100,
+                    ticks: {
+                        color: 'rgba(255, 255, 255, 0.6)'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    }
                 }
             }
         }
@@ -189,11 +205,18 @@ function updateTable() {
             const value = item.years[year];
             cell.textContent = value !== undefined ? value.toFixed(2) + '%' : '-';
 
-            // Color coding
+            // Color coding for dark theme
             if (value !== undefined) {
-                if (value < 10) cell.style.background = '#d4edda';
-                else if (value < 30) cell.style.background = '#fff3cd';
-                else cell.style.background = '#f8d7da';
+                if (value < 10) {
+                    cell.style.background = 'rgba(34, 197, 94, 0.2)';
+                    cell.style.color = '#22c55e';
+                } else if (value < 30) {
+                    cell.style.background = 'rgba(234, 179, 8, 0.2)';
+                    cell.style.color = '#eab308';
+                } else {
+                    cell.style.background = 'rgba(239, 68, 68, 0.2)';
+                    cell.style.color = '#ef4444';
+                }
             }
         }
     });
@@ -243,9 +266,9 @@ function updateStats() {
 // Generate random color for chart lines
 function getRandomColor() {
     const colors = [
-        '#667eea', '#764ba2', '#f093fb', '#4facfe',
-        '#43e97b', '#fa709a', '#fee140', '#30cfd0',
-        '#a8edea', '#fed6e3', '#c471f5', '#fa71cd'
+        '#22c55e', '#14b8a6', '#f97316', '#eab308',
+        '#3b82f6', '#a855f7', '#ec4899', '#06b6d4',
+        '#10b981', '#8b5cf6', '#f43f5e', '#84cc16'
     ];
     return colors[Math.floor(Math.random() * colors.length)];
 }

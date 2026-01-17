@@ -1,0 +1,13 @@
+Country,Bacteria,Year,Predicted_Resistance_%
+Turkey,E. coli,2025,23.6
+Turkey,E. coli,2026,19.21
+Turkey,E. coli,2027,15.63
+Turkey,E. coli,2028,12.72
+Turkey,E. coli,2029,10.36
+Turkey,E. coli,2030,8.43
+Turkey,S. aureus,2025,13.6
+Turkey,S. aureus,2026,11.07
+Turkey,S. aureus,2027,9.01
+Turkey,S. aureus,2028,7.33
+Turkey,S. aureus,2029,5.97
+Turkey,S. aureus,2030,4.86

@@ -1,0 +1,877 @@
+Country,Bacteria,Year,Predicted_Resistance_%
+Austria,Acinetobacter,2025,0.0
+Austria,E. coli,2025,1.78
+Austria,General AMR,2025,2.0
+Austria,K. pneumoniae,2025,2.04
+Austria,P. aeruginosa,2025,4.16
+Austria,Acinetobacter,2026,0.0
+Austria,E. coli,2026,1.51
+Austria,General AMR,2026,1.72
+Austria,K. pneumoniae,2026,1.78
+Austria,P. aeruginosa,2026,3.64
+Austria,Acinetobacter,2027,0.0
+Austria,E. coli,2027,1.21
+Austria,General AMR,2027,1.41
+Austria,K. pneumoniae,2027,1.5
+Austria,P. aeruginosa,2027,3.09
+Austria,Acinetobacter,2028,0.0
+Austria,E. coli,2028,0.89
+Austria,General AMR,2028,1.08
+Austria,K. pneumoniae,2028,1.19
+Austria,P. aeruginosa,2028,2.5
+Austria,Acinetobacter,2029,0.0
+Austria,E. coli,2029,0.54
+Austria,General AMR,2029,0.72
+Austria,K. pneumoniae,2029,0.86
+Austria,P. aeruginosa,2029,1.88
+Austria,Acinetobacter,2030,0.0
+Austria,E. coli,2030,0.16
+Austria,General AMR,2030,0.34
+Austria,K. pneumoniae,2030,0.51
+Austria,P. aeruginosa,2030,1.23
+Belgium,Acinetobacter,2025,1.15
+Belgium,E. coli,2025,2.58
+Belgium,General AMR,2025,4.34
+Belgium,K. pneumoniae,2025,7.73
+Belgium,P. aeruginosa,2025,9.42
+Belgium,Acinetobacter,2026,1.32
+Belgium,E. coli,2026,2.48
+Belgium,General AMR,2026,4.16
+Belgium,K. pneumoniae,2026,6.94
+Belgium,P. aeruginosa,2026,9.95
+Belgium,Acinetobacter,2027,1.57
+Belgium,E. coli,2027,2.35
+Belgium,General AMR,2027,3.95
+Belgium,K. pneumoniae,2027,6.03
+Belgium,P. aeruginosa,2027,10.53
+Belgium,Acinetobacter,2028,1.9
+Belgium,E. coli,2028,2.21
+Belgium,General AMR,2028,3.7
+Belgium,K. pneumoniae,2028,4.98
+Belgium,P. aeruginosa,2028,11.16
+Belgium,Acinetobacter,2029,2.3
+Belgium,E. coli,2029,2.05
+Belgium,General AMR,2029,3.43
+Belgium,K. pneumoniae,2029,3.81
+Belgium,P. aeruginosa,2029,11.85
+Belgium,Acinetobacter,2030,2.79
+Belgium,E. coli,2030,1.88
+Belgium,General AMR,2030,3.13
+Belgium,K. pneumoniae,2030,2.52
+Belgium,P. aeruginosa,2030,12.59
+Bulgaria,Acinetobacter,2025,76.96
+Bulgaria,E. coli,2025,14.09
+Bulgaria,General AMR,2025,30.93
+Bulgaria,K. pneumoniae,2025,68.14
+Bulgaria,P. aeruginosa,2025,38.4
+Bulgaria,Acinetobacter,2026,74.5
+Bulgaria,E. coli,2026,13.21
+Bulgaria,General AMR,2026,31.1
+Bulgaria,K. pneumoniae,2026,71.16
+Bulgaria,P. aeruginosa,2026,40.11
+Bulgaria,Acinetobacter,2027,71.23
+Bulgaria,E. coli,2027,12.24
+Bulgaria,General AMR,2027,31.22
+Bulgaria,K. pneumoniae,2027,74.27
+Bulgaria,P. aeruginosa,2027,41.95
+Bulgaria,Acinetobacter,2028,67.16
+Bulgaria,E. coli,2028,11.16
+Bulgaria,General AMR,2028,31.27
+Bulgaria,K. pneumoniae,2028,77.49
+Bulgaria,P. aeruginosa,2028,43.91
+Bulgaria,Acinetobacter,2029,62.28
+Bulgaria,E. coli,2029,9.99
+Bulgaria,General AMR,2029,31.26
+Bulgaria,K. pneumoniae,2029,80.81
+Bulgaria,P. aeruginosa,2029,46.0
+Bulgaria,Acinetobacter,2030,56.61
+Bulgaria,E. coli,2030,8.73
+Bulgaria,General AMR,2030,31.21
+Bulgaria,K. pneumoniae,2030,84.24
+Bulgaria,P. aeruginosa,2030,48.21
+Croatia,Acinetobacter,2025,90.75
+Croatia,E. coli,2025,11.29
+Croatia,General AMR,2025,20.19
+Croatia,K. pneumoniae,2025,37.8
+Croatia,P. aeruginosa,2025,10.14
+Croatia,Acinetobacter,2026,88.93
+Croatia,E. coli,2026,11.85
+Croatia,General AMR,2026,20.31
+Croatia,K. pneumoniae,2026,38.16
+Croatia,P. aeruginosa,2026,7.72
+Croatia,Acinetobacter,2027,86.66
+Croatia,E. coli,2027,12.41
+Croatia,General AMR,2027,20.39
+Croatia,K. pneumoniae,2027,38.49
+Croatia,P. aeruginosa,2027,5.12
+Croatia,Acinetobacter,2028,83.93
+Croatia,E. coli,2028,12.97
+Croatia,General AMR,2028,20.42
+Croatia,K. pneumoniae,2028,38.77
+Croatia,P. aeruginosa,2028,2.35
+Croatia,Acinetobacter,2029,80.74
+Croatia,E. coli,2029,13.53
+Croatia,General AMR,2029,20.47
+Croatia,K. pneumoniae,2029,39.02
+Croatia,P. aeruginosa,2029,0.0
+Croatia,Acinetobacter,2030,77.1
+Croatia,E. coli,2030,14.1
+Croatia,General AMR,2030,20.74
+Croatia,K. pneumoniae,2030,39.23
+Croatia,P. aeruginosa,2030,0.0
+Cyprus,Acinetobacter,2025,79.87
+Cyprus,E. coli,2025,8.83
+Cyprus,General AMR,2025,20.71
+Cyprus,K. pneumoniae,2025,40.42
+Cyprus,P. aeruginosa,2025,29.7
+Cyprus,Acinetobacter,2026,77.88
+Cyprus,E. coli,2026,7.51
+Cyprus,General AMR,2026,20.9
+Cyprus,K. pneumoniae,2026,43.65
+Cyprus,P. aeruginosa,2026,33.75
+Cyprus,Acinetobacter,2027,75.31
+Cyprus,E. coli,2027,6.04
+Cyprus,General AMR,2027,21.04
+Cyprus,K. pneumoniae,2027,47.04
+Cyprus,P. aeruginosa,2027,38.17
+Cyprus,Acinetobacter,2028,72.17
+Cyprus,E. coli,2028,4.42
+Cyprus,General AMR,2028,21.15
+Cyprus,K. pneumoniae,2028,50.62
+Cyprus,P. aeruginosa,2028,42.96
+Cyprus,Acinetobacter,2029,68.45
+Cyprus,E. coli,2029,2.65
+Cyprus,General AMR,2029,21.21
+Cyprus,K. pneumoniae,2029,54.37
+Cyprus,P. aeruginosa,2029,48.11
+Cyprus,Acinetobacter,2030,64.15
+Cyprus,E. coli,2030,0.73
+Cyprus,General AMR,2030,21.22
+Cyprus,K. pneumoniae,2030,58.29
+Cyprus,P. aeruginosa,2030,53.63
+Czechia,Acinetobacter,2025,33.68
+Czechia,E. coli,2025,5.05
+Czechia,General AMR,2025,10.7
+Czechia,K. pneumoniae,2025,21.39
+Czechia,P. aeruginosa,2025,14.1
+Czechia,Acinetobacter,2026,32.99
+Czechia,E. coli,2026,4.77
+Czechia,General AMR,2026,9.51
+Czechia,K. pneumoniae,2026,17.06
+Czechia,P. aeruginosa,2026,13.88
+Czechia,Acinetobacter,2027,31.7
+Czechia,E. coli,2027,4.45
+Czechia,General AMR,2027,8.2
+Czechia,K. pneumoniae,2027,12.31
+Czechia,P. aeruginosa,2027,13.73
+Czechia,Acinetobacter,2028,29.81
+Czechia,E. coli,2028,4.09
+Czechia,General AMR,2028,6.74
+Czechia,K. pneumoniae,2028,7.14
+Czechia,P. aeruginosa,2028,13.64
+Czechia,Acinetobacter,2029,27.32
+Czechia,E. coli,2029,3.69
+Czechia,General AMR,2029,5.15
+Czechia,K. pneumoniae,2029,1.54
+Czechia,P. aeruginosa,2029,13.6
+Czechia,Acinetobacter,2030,24.24
+Czechia,E. coli,2030,3.24
+Czechia,General AMR,2030,4.41
+Czechia,K. pneumoniae,2030,0.0
+Czechia,P. aeruginosa,2030,13.62
+Denmark,Acinetobacter,2025,5.54
+Denmark,E. coli,2025,0.55
+Denmark,General AMR,2025,0.88
+Denmark,K. pneumoniae,2025,0.59
+Denmark,P. aeruginosa,2025,1.79
+Denmark,Acinetobacter,2026,6.68
+Denmark,E. coli,2026,0.2
+Denmark,General AMR,2026,0.65
+Denmark,K. pneumoniae,2026,0.32
+Denmark,P. aeruginosa,2026,1.82
+Denmark,Acinetobacter,2027,7.97
+Denmark,E. coli,2027,0.0
+Denmark,General AMR,2027,0.52
+Denmark,K. pneumoniae,2027,0.06
+Denmark,P. aeruginosa,2027,1.85
+Denmark,Acinetobacter,2028,9.41
+Denmark,E. coli,2028,0.0
+Denmark,General AMR,2028,0.57
+Denmark,K. pneumoniae,2028,0.0
+Denmark,P. aeruginosa,2028,1.89
+Denmark,Acinetobacter,2029,11.01
+Denmark,E. coli,2029,0.0
+Denmark,General AMR,2029,0.63
+Denmark,K. pneumoniae,2029,0.0
+Denmark,P. aeruginosa,2029,1.94
+Denmark,Acinetobacter,2030,12.76
+Denmark,E. coli,2030,0.0
+Denmark,General AMR,2030,0.71
+Denmark,K. pneumoniae,2030,0.0
+Denmark,P. aeruginosa,2030,1.99
+Estonia,E. coli,2025,2.46
+Estonia,General AMR,2025,1.84
+Estonia,K. pneumoniae,2025,0.0
+Estonia,P. aeruginosa,2025,1.93
+Estonia,E. coli,2026,2.35
+Estonia,General AMR,2026,1.77
+Estonia,K. pneumoniae,2026,0.0
+Estonia,P. aeruginosa,2026,1.98
+Estonia,E. coli,2027,2.21
+Estonia,General AMR,2027,1.69
+Estonia,K. pneumoniae,2027,0.0
+Estonia,P. aeruginosa,2027,2.1
+Estonia,E. coli,2028,2.06
+Estonia,General AMR,2028,1.61
+Estonia,K. pneumoniae,2028,0.0
+Estonia,P. aeruginosa,2028,2.29
+Estonia,E. coli,2029,1.89
+Estonia,General AMR,2029,1.52
+Estonia,K. pneumoniae,2029,0.0
+Estonia,P. aeruginosa,2029,2.54
+Estonia,E. coli,2030,1.69
+Estonia,General AMR,2030,1.43
+Estonia,K. pneumoniae,2030,0.0
+Estonia,P. aeruginosa,2030,2.87
+Finland,Acinetobacter,2025,0.69
+Finland,E. coli,2025,1.43
+Finland,General AMR,2025,1.87
+Finland,K. pneumoniae,2025,3.38
+Finland,P. aeruginosa,2025,1.84
+Finland,Acinetobacter,2026,0.39
+Finland,E. coli,2026,1.21
+Finland,General AMR,2026,1.79
+Finland,K. pneumoniae,2026,3.68
+Finland,P. aeruginosa,2026,1.92
+Finland,Acinetobacter,2027,0.05
+Finland,E. coli,2027,0.96
+Finland,General AMR,2027,1.7
+Finland,K. pneumoniae,2027,4.0
+Finland,P. aeruginosa,2027,2.05
+Finland,Acinetobacter,2028,0.0
+Finland,E. coli,2028,0.68
+Finland,General AMR,2028,1.61
+Finland,K. pneumoniae,2028,4.34
+Finland,P. aeruginosa,2028,2.22
+Finland,Acinetobacter,2029,0.0
+Finland,E. coli,2029,0.39
+Finland,General AMR,2029,1.53
+Finland,K. pneumoniae,2029,4.7
+Finland,P. aeruginosa,2029,2.44
+Finland,Acinetobacter,2030,0.0
+Finland,E. coli,2030,0.07
+Finland,General AMR,2030,1.43
+Finland,K. pneumoniae,2030,5.08
+Finland,P. aeruginosa,2030,2.71
+France,Acinetobacter,2025,0.0
+France,E. coli,2025,2.11
+France,General AMR,2025,2.99
+France,K. pneumoniae,2025,6.34
+France,P. aeruginosa,2025,2.49
+France,Acinetobacter,2026,0.0
+France,E. coli,2026,1.8
+France,General AMR,2026,1.86
+France,K. pneumoniae,2026,2.86
+France,P. aeruginosa,2026,0.77
+France,Acinetobacter,2027,0.0
+France,E. coli,2027,1.45
+France,General AMR,2027,0.93
+France,K. pneumoniae,2027,0.0
+France,P. aeruginosa,2027,0.0
+France,Acinetobacter,2028,0.0
+France,E. coli,2028,1.06
+France,General AMR,2028,0.68
+France,K. pneumoniae,2028,0.0
+France,P. aeruginosa,2028,0.0
+France,Acinetobacter,2029,0.0
+France,E. coli,2029,0.65
+France,General AMR,2029,0.42
+France,K. pneumoniae,2029,0.0
+France,P. aeruginosa,2029,0.0
+France,Acinetobacter,2030,0.0
+France,E. coli,2030,0.19
+France,General AMR,2030,0.12
+France,K. pneumoniae,2030,0.0
+France,P. aeruginosa,2030,0.0
+Germany,Acinetobacter,2025,2.7
+Germany,E. coli,2025,1.38
+Germany,General AMR,2025,1.85
+Germany,K. pneumoniae,2025,0.79
+Germany,P. aeruginosa,2025,6.84
+Germany,Acinetobacter,2026,3.08
+Germany,E. coli,2026,0.98
+Germany,General AMR,2026,1.46
+Germany,K. pneumoniae,2026,0.0
+Germany,P. aeruginosa,2026,7.08
+Germany,Acinetobacter,2027,3.54
+Germany,E. coli,2027,0.55
+Germany,General AMR,2027,1.23
+Germany,K. pneumoniae,2027,0.0
+Germany,P. aeruginosa,2027,7.36
+Germany,Acinetobacter,2028,4.07
+Germany,E. coli,2028,0.08
+Germany,General AMR,2028,0.98
+Germany,K. pneumoniae,2028,0.0
+Germany,P. aeruginosa,2028,7.7
+Germany,Acinetobacter,2029,4.68
+Germany,E. coli,2029,0.0
+Germany,General AMR,2029,1.0
+Germany,K. pneumoniae,2029,0.0
+Germany,P. aeruginosa,2029,8.08
+Germany,Acinetobacter,2030,5.36
+Germany,E. coli,2030,0.0
+Germany,General AMR,2030,1.07
+Germany,K. pneumoniae,2030,0.0
+Germany,P. aeruginosa,2030,8.51
+Greece,Acinetobacter,2025,87.43
+Greece,E. coli,2025,11.34
+Greece,General AMR,2025,29.11
+Greece,K. pneumoniae,2025,61.89
+Greece,P. aeruginosa,2025,47.44
+Greece,Acinetobacter,2026,86.33
+Greece,E. coli,2026,11.23
+Greece,General AMR,2026,29.45
+Greece,K. pneumoniae,2026,62.56
+Greece,P. aeruginosa,2026,50.5
+Greece,Acinetobacter,2027,84.94
+Greece,E. coli,2027,11.06
+Greece,General AMR,2027,29.76
+Greece,K. pneumoniae,2027,63.2
+Greece,P. aeruginosa,2027,53.84
+Greece,Acinetobacter,2028,83.27
+Greece,E. coli,2028,10.85
+Greece,General AMR,2028,30.06
+Greece,K. pneumoniae,2028,63.82
+Greece,P. aeruginosa,2028,57.46
+Greece,Acinetobacter,2029,81.31
+Greece,E. coli,2029,10.59
+Greece,General AMR,2029,30.34
+Greece,K. pneumoniae,2029,64.42
+Greece,P. aeruginosa,2029,61.37
+Greece,Acinetobacter,2030,79.06
+Greece,E. coli,2030,10.28
+Greece,General AMR,2030,30.6
+Greece,K. pneumoniae,2030,64.99
+Greece,P. aeruginosa,2030,65.57
+Hungary,Acinetobacter,2025,39.4
+Hungary,E. coli,2025,7.46
+Hungary,General AMR,2025,11.36
+Hungary,K. pneumoniae,2025,17.91
+Hungary,P. aeruginosa,2025,10.65
+Hungary,Acinetobacter,2026,34.06
+Hungary,E. coli,2026,6.74
+Hungary,General AMR,2026,9.75
+Hungary,K. pneumoniae,2026,14.36
+Hungary,P. aeruginosa,2026,9.1
+Hungary,Acinetobacter,2027,27.93
+Hungary,E. coli,2027,5.93
+Hungary,General AMR,2027,7.96
+Hungary,K. pneumoniae,2027,10.48
+Hungary,P. aeruginosa,2027,7.43
+Hungary,Acinetobacter,2028,21.0
+Hungary,E. coli,2028,5.04
+Hungary,General AMR,2028,6.0
+Hungary,K. pneumoniae,2028,6.24
+Hungary,P. aeruginosa,2028,5.63
+Hungary,Acinetobacter,2029,13.28
+Hungary,E. coli,2029,4.05
+Hungary,General AMR,2029,3.86
+Hungary,K. pneumoniae,2029,1.67
+Hungary,P. aeruginosa,2029,3.71
+Hungary,Acinetobacter,2030,4.77
+Hungary,E. coli,2030,2.99
+Hungary,General AMR,2030,2.27
+Hungary,K. pneumoniae,2030,0.0
+Hungary,P. aeruginosa,2030,1.66
+Iceland,E. coli,2025,4.19
+Iceland,General AMR,2025,3.56
+Iceland,K. pneumoniae,2025,0.0
+Iceland,P. aeruginosa,2025,7.32
+Iceland,E. coli,2026,4.59
+Iceland,General AMR,2026,4.15
+Iceland,K. pneumoniae,2026,0.01
+Iceland,P. aeruginosa,2026,10.43
+Iceland,E. coli,2027,5.0
+Iceland,General AMR,2027,4.84
+Iceland,K. pneumoniae,2027,0.04
+Iceland,P. aeruginosa,2027,14.38
+Iceland,E. coli,2028,5.43
+Iceland,General AMR,2028,5.63
+Iceland,K. pneumoniae,2028,0.08
+Iceland,P. aeruginosa,2028,19.16
+Iceland,E. coli,2029,5.88
+Iceland,General AMR,2029,6.53
+Iceland,K. pneumoniae,2029,0.12
+Iceland,P. aeruginosa,2029,24.77
+Iceland,E. coli,2030,6.35
+Iceland,General AMR,2030,7.52
+Iceland,K. pneumoniae,2030,0.17
+Iceland,P. aeruginosa,2030,31.22
+Ireland,Acinetobacter,2025,0.0
+Ireland,E. coli,2025,3.53
+Ireland,General AMR,2025,3.32
+Ireland,K. pneumoniae,2025,3.42
+Ireland,P. aeruginosa,2025,3.1
+Ireland,Acinetobacter,2026,0.0
+Ireland,E. coli,2026,3.17
+Ireland,General AMR,2026,2.87
+Ireland,K. pneumoniae,2026,2.6
+Ireland,P. aeruginosa,2026,2.73
+Ireland,Acinetobacter,2027,0.0
+Ireland,E. coli,2027,2.76
+Ireland,General AMR,2027,2.37
+Ireland,K. pneumoniae,2027,1.69
+Ireland,P. aeruginosa,2027,2.34
+Ireland,Acinetobacter,2028,0.0
+Ireland,E. coli,2028,2.31
+Ireland,General AMR,2028,1.82
+Ireland,K. pneumoniae,2028,0.69
+Ireland,P. aeruginosa,2028,1.94
+Ireland,Acinetobacter,2029,0.0
+Ireland,E. coli,2029,1.82
+Ireland,General AMR,2029,1.32
+Ireland,K. pneumoniae,2029,0.0
+Ireland,P. aeruginosa,2029,1.52
+Ireland,Acinetobacter,2030,0.0
+Ireland,E. coli,2030,1.28
+Ireland,General AMR,2030,0.93
+Ireland,K. pneumoniae,2030,0.0
+Ireland,P. aeruginosa,2030,1.08
+Italy,Acinetobacter,2025,73.25
+Italy,E. coli,2025,7.61
+Italy,General AMR,2025,13.78
+Italy,K. pneumoniae,2025,23.67
+Italy,P. aeruginosa,2025,7.69
+Italy,Acinetobacter,2026,72.06
+Italy,E. coli,2026,6.43
+Italy,General AMR,2026,12.3
+Italy,K. pneumoniae,2026,21.29
+Italy,P. aeruginosa,2026,6.18
+Italy,Acinetobacter,2027,70.75
+Italy,E. coli,2027,5.12
+Italy,General AMR,2027,10.66
+Italy,K. pneumoniae,2027,18.61
+Italy,P. aeruginosa,2027,4.62
+Italy,Acinetobacter,2028,69.31
+Italy,E. coli,2028,3.69
+Italy,General AMR,2028,8.87
+Italy,K. pneumoniae,2028,15.63
+Italy,P. aeruginosa,2028,3.02
+Italy,Acinetobacter,2029,67.75
+Italy,E. coli,2029,2.12
+Italy,General AMR,2029,6.92
+Italy,K. pneumoniae,2029,12.37
+Italy,P. aeruginosa,2029,1.36
+Italy,Acinetobacter,2030,66.07
+Italy,E. coli,2030,0.43
+Italy,General AMR,2030,4.85
+Italy,K. pneumoniae,2030,8.8
+Italy,P. aeruginosa,2030,0.0
+Latvia,Acinetobacter,2025,64.55
+Latvia,E. coli,2025,15.18
+Latvia,General AMR,2025,16.36
+Latvia,K. pneumoniae,2025,12.28
+Latvia,P. aeruginosa,2025,13.63
+Latvia,Acinetobacter,2026,64.44
+Latvia,E. coli,2026,16.26
+Latvia,General AMR,2026,15.59
+Latvia,K. pneumoniae,2026,7.44
+Latvia,P. aeruginosa,2026,9.67
+Latvia,Acinetobacter,2027,64.22
+Latvia,E. coli,2027,17.4
+Latvia,General AMR,2027,14.69
+Latvia,K. pneumoniae,2027,2.13
+Latvia,P. aeruginosa,2027,5.21
+Latvia,Acinetobacter,2028,63.88
+Latvia,E. coli,2028,18.6
+Latvia,General AMR,2028,14.48
+Latvia,K. pneumoniae,2028,0.0
+Latvia,P. aeruginosa,2028,0.23
+Latvia,Acinetobacter,2029,63.43
+Latvia,E. coli,2029,19.85
+Latvia,General AMR,2029,15.24
+Latvia,K. pneumoniae,2029,0.0
+Latvia,P. aeruginosa,2029,0.0
+Latvia,Acinetobacter,2030,62.86
+Latvia,E. coli,2030,21.16
+Latvia,General AMR,2030,16.06
+Latvia,K. pneumoniae,2030,0.0
+Latvia,P. aeruginosa,2030,0.0
+Lithuania,Acinetobacter,2025,72.32
+Lithuania,E. coli,2025,7.48
+Lithuania,General AMR,2025,11.06
+Lithuania,K. pneumoniae,2025,7.8
+Lithuania,P. aeruginosa,2025,16.61
+Lithuania,Acinetobacter,2026,65.86
+Lithuania,E. coli,2026,8.07
+Lithuania,General AMR,2026,9.52
+Lithuania,K. pneumoniae,2026,0.0
+Lithuania,P. aeruginosa,2026,17.18
+Lithuania,Acinetobacter,2027,58.17
+Lithuania,E. coli,2027,8.69
+Lithuania,General AMR,2027,9.67
+Lithuania,K. pneumoniae,2027,0.0
+Lithuania,P. aeruginosa,2027,17.84
+Lithuania,Acinetobacter,2028,49.27
+Lithuania,E. coli,2028,9.35
+Lithuania,General AMR,2028,9.81
+Lithuania,K. pneumoniae,2028,0.0
+Lithuania,P. aeruginosa,2028,18.58
+Lithuania,Acinetobacter,2029,39.16
+Lithuania,E. coli,2029,10.04
+Lithuania,General AMR,2029,9.93
+Lithuania,K. pneumoniae,2029,0.0
+Lithuania,P. aeruginosa,2029,19.39
+Lithuania,Acinetobacter,2030,27.83
+Lithuania,E. coli,2030,10.76
+Lithuania,General AMR,2030,10.03
+Lithuania,K. pneumoniae,2030,0.0
+Lithuania,P. aeruginosa,2030,20.29
+Luxembourg,E. coli,2025,2.76
+Luxembourg,General AMR,2025,3.05
+Luxembourg,K. pneumoniae,2025,0.0
+Luxembourg,P. aeruginosa,2025,11.57
+Luxembourg,E. coli,2026,2.48
+Luxembourg,General AMR,2026,3.15
+Luxembourg,K. pneumoniae,2026,0.0
+Luxembourg,P. aeruginosa,2026,14.35
+Luxembourg,E. coli,2027,2.17
+Luxembourg,General AMR,2027,3.27
+Luxembourg,K. pneumoniae,2027,0.0
+Luxembourg,P. aeruginosa,2027,17.49
+Luxembourg,E. coli,2028,1.83
+Luxembourg,General AMR,2028,3.41
+Luxembourg,K. pneumoniae,2028,0.0
+Luxembourg,P. aeruginosa,2028,20.99
+Luxembourg,E. coli,2029,1.45
+Luxembourg,General AMR,2029,3.56
+Luxembourg,K. pneumoniae,2029,0.0
+Luxembourg,P. aeruginosa,2029,24.86
+Luxembourg,E. coli,2030,1.05
+Luxembourg,General AMR,2030,3.73
+Luxembourg,K. pneumoniae,2030,0.0
+Luxembourg,P. aeruginosa,2030,29.08
+Malta,E. coli,2025,7.88
+Malta,General AMR,2025,6.17
+Malta,K. pneumoniae,2025,2.28
+Malta,P. aeruginosa,2025,3.83
+Malta,E. coli,2026,7.54
+Malta,General AMR,2026,5.35
+Malta,K. pneumoniae,2026,0.0
+Malta,P. aeruginosa,2026,3.06
+Malta,E. coli,2027,7.15
+Malta,General AMR,2027,5.0
+Malta,K. pneumoniae,2027,0.0
+Malta,P. aeruginosa,2027,2.28
+Malta,E. coli,2028,6.72
+Malta,General AMR,2028,4.63
+Malta,K. pneumoniae,2028,0.0
+Malta,P. aeruginosa,2028,1.48
+Malta,E. coli,2029,6.23
+Malta,General AMR,2029,4.22
+Malta,K. pneumoniae,2029,0.0
+Malta,P. aeruginosa,2029,0.65
+Malta,E. coli,2030,5.7
+Malta,General AMR,2030,3.8
+Malta,K. pneumoniae,2030,0.0
+Malta,P. aeruginosa,2030,0.0
+Netherlands,Acinetobacter,2025,0.68
+Netherlands,E. coli,2025,2.01
+Netherlands,General AMR,2025,2.84
+Netherlands,K. pneumoniae,2025,5.66
+Netherlands,P. aeruginosa,2025,2.78
+Netherlands,Acinetobacter,2026,0.6
+Netherlands,E. coli,2026,1.92
+Netherlands,General AMR,2026,2.87
+Netherlands,K. pneumoniae,2026,5.93
+Netherlands,P. aeruginosa,2026,3.11
+Netherlands,Acinetobacter,2027,0.52
+Netherlands,E. coli,2027,1.82
+Netherlands,General AMR,2027,2.9
+Netherlands,K. pneumoniae,2027,6.22
+Netherlands,P. aeruginosa,2027,3.49
+Netherlands,Acinetobacter,2028,0.43
+Netherlands,E. coli,2028,1.71
+Netherlands,General AMR,2028,2.93
+Netherlands,K. pneumoniae,2028,6.51
+Netherlands,P. aeruginosa,2028,3.9
+Netherlands,Acinetobacter,2029,0.35
+Netherlands,E. coli,2029,1.58
+Netherlands,General AMR,2029,2.96
+Netherlands,K. pneumoniae,2029,6.81
+Netherlands,P. aeruginosa,2029,4.36
+Netherlands,Acinetobacter,2030,0.27
+Netherlands,E. coli,2030,1.43
+Netherlands,General AMR,2030,2.98
+Netherlands,K. pneumoniae,2030,7.12
+Netherlands,P. aeruginosa,2030,4.86
+Norway,Acinetobacter,2025,0.0
+Norway,E. coli,2025,1.43
+Norway,General AMR,2025,1.82
+Norway,K. pneumoniae,2025,3.1
+Norway,P. aeruginosa,2025,2.27
+Norway,Acinetobacter,2026,0.0
+Norway,E. coli,2026,1.32
+Norway,General AMR,2026,1.72
+Norway,K. pneumoniae,2026,2.97
+Norway,P. aeruginosa,2026,2.18
+Norway,Acinetobacter,2027,0.0
+Norway,E. coli,2027,1.19
+Norway,General AMR,2027,1.59
+Norway,K. pneumoniae,2027,2.8
+Norway,P. aeruginosa,2027,2.08
+Norway,Acinetobacter,2028,0.0
+Norway,E. coli,2028,1.04
+Norway,General AMR,2028,1.43
+Norway,K. pneumoniae,2028,2.6
+Norway,P. aeruginosa,2028,1.96
+Norway,Acinetobacter,2029,0.0
+Norway,E. coli,2029,0.88
+Norway,General AMR,2029,1.27
+Norway,K. pneumoniae,2029,2.37
+Norway,P. aeruginosa,2029,1.82
+Norway,Acinetobacter,2030,0.0
+Norway,E. coli,2030,0.71
+Norway,General AMR,2030,1.09
+Norway,K. pneumoniae,2030,2.11
+Norway,P. aeruginosa,2030,1.68
+Poland,Acinetobacter,2025,54.14
+Poland,E. coli,2025,10.87
+Poland,General AMR,2025,20.48
+Poland,K. pneumoniae,2025,40.65
+Poland,P. aeruginosa,2025,24.18
+Poland,Acinetobacter,2026,49.56
+Poland,E. coli,2026,11.28
+Poland,General AMR,2026,19.89
+Poland,K. pneumoniae,2026,37.19
+Poland,P. aeruginosa,2026,25.08
+Poland,Acinetobacter,2027,44.11
+Poland,E. coli,2027,11.68
+Poland,General AMR,2027,19.17
+Poland,K. pneumoniae,2027,33.25
+Poland,P. aeruginosa,2027,26.11
+Poland,Acinetobacter,2028,37.81
+Poland,E. coli,2028,12.08
+Poland,General AMR,2028,18.32
+Poland,K. pneumoniae,2028,28.83
+Poland,P. aeruginosa,2028,27.29
+Poland,Acinetobacter,2029,30.64
+Poland,E. coli,2029,12.47
+Poland,General AMR,2029,17.33
+Poland,K. pneumoniae,2029,23.94
+Poland,P. aeruginosa,2029,28.61
+Poland,Acinetobacter,2030,22.62
+Poland,E. coli,2030,12.85
+Poland,General AMR,2030,16.22
+Poland,K. pneumoniae,2030,18.57
+Poland,P. aeruginosa,2030,30.07
+Portugal,Acinetobacter,2025,25.92
+Portugal,E. coli,2025,4.72
+Portugal,General AMR,2025,7.6
+Portugal,K. pneumoniae,2025,14.32
+Portugal,P. aeruginosa,2025,3.9
+Portugal,Acinetobacter,2026,31.48
+Portugal,E. coli,2026,4.17
+Portugal,General AMR,2026,6.55
+Portugal,K. pneumoniae,2026,11.23
+Portugal,P. aeruginosa,2026,1.55
+Portugal,Acinetobacter,2027,38.26
+Portugal,E. coli,2027,3.57
+Portugal,General AMR,2027,5.52
+Portugal,K. pneumoniae,2027,7.77
+Portugal,P. aeruginosa,2027,0.0
+Portugal,Acinetobacter,2028,46.28
+Portugal,E. coli,2028,2.92
+Portugal,General AMR,2028,4.59
+Portugal,K. pneumoniae,2028,3.96
+Portugal,P. aeruginosa,2028,0.0
+Portugal,Acinetobacter,2029,55.54
+Portugal,E. coli,2029,2.22
+Portugal,General AMR,2029,3.64
+Portugal,K. pneumoniae,2029,0.0
+Portugal,P. aeruginosa,2029,0.0
+Portugal,Acinetobacter,2030,66.02
+Portugal,E. coli,2030,1.48
+Portugal,General AMR,2030,3.59
+Portugal,K. pneumoniae,2030,0.0
+Portugal,P. aeruginosa,2030,0.0
+Romania,Acinetobacter,2025,82.52
+Romania,E. coli,2025,1.71
+Romania,General AMR,2025,18.03
+Romania,K. pneumoniae,2025,47.45
+Romania,P. aeruginosa,2025,31.98
+Romania,Acinetobacter,2026,79.54
+Romania,E. coli,2026,0.11
+Romania,General AMR,2026,15.95
+Romania,K. pneumoniae,2026,45.51
+Romania,P. aeruginosa,2026,26.87
+Romania,Acinetobacter,2027,75.89
+Romania,E. coli,2027,0.0
+Romania,General AMR,2027,14.67
+Romania,K. pneumoniae,2027,43.25
+Romania,P. aeruginosa,2027,21.23
+Romania,Acinetobacter,2028,71.58
+Romania,E. coli,2028,0.0
+Romania,General AMR,2028,13.32
+Romania,K. pneumoniae,2028,40.68
+Romania,P. aeruginosa,2028,15.05
+Romania,Acinetobacter,2029,66.61
+Romania,E. coli,2029,0.0
+Romania,General AMR,2029,11.81
+Romania,K. pneumoniae,2029,37.8
+Romania,P. aeruginosa,2029,8.33
+Romania,Acinetobacter,2030,60.97
+Romania,E. coli,2030,0.0
+Romania,General AMR,2030,10.16
+Romania,K. pneumoniae,2030,34.6
+Romania,P. aeruginosa,2030,1.08
+Slovakia,Acinetobacter,2025,47.16
+Slovakia,E. coli,2025,7.1
+Slovakia,General AMR,2025,15.58
+Slovakia,K. pneumoniae,2025,29.8
+Slovakia,P. aeruginosa,2025,25.98
+Slovakia,Acinetobacter,2026,48.1
+Slovakia,E. coli,2026,5.22
+Slovakia,General AMR,2026,13.26
+Slovakia,K. pneumoniae,2026,25.52
+Slovakia,P. aeruginosa,2026,23.76
+Slovakia,Acinetobacter,2027,48.82
+Slovakia,E. coli,2027,3.17
+Slovakia,General AMR,2027,10.73
+Slovakia,K. pneumoniae,2027,20.97
+Slovakia,P. aeruginosa,2027,21.35
+Slovakia,Acinetobacter,2028,49.34
+Slovakia,E. coli,2028,0.93
+Slovakia,General AMR,2028,8.0
+Slovakia,K. pneumoniae,2028,16.14
+Slovakia,P. aeruginosa,2028,18.76
+Slovakia,Acinetobacter,2029,49.65
+Slovakia,E. coli,2029,0.0
+Slovakia,General AMR,2029,6.01
+Slovakia,K. pneumoniae,2029,11.03
+Slovakia,P. aeruginosa,2029,15.98
+Slovakia,Acinetobacter,2030,49.75
+Slovakia,E. coli,2030,0.0
+Slovakia,General AMR,2030,4.54
+Slovakia,K. pneumoniae,2030,5.65
+Slovakia,P. aeruginosa,2030,13.02
+Slovenia,Acinetobacter,2025,10.71
+Slovenia,E. coli,2025,2.24
+Slovenia,General AMR,2025,3.9
+Slovenia,K. pneumoniae,2025,5.84
+Slovenia,P. aeruginosa,2025,7.54
+Slovenia,Acinetobacter,2026,2.4
+Slovenia,E. coli,2026,1.6
+Slovenia,General AMR,2026,2.77
+Slovenia,K. pneumoniae,2026,4.27
+Slovenia,P. aeruginosa,2026,7.09
+Slovenia,Acinetobacter,2027,0.0
+Slovenia,E. coli,2027,0.89
+Slovenia,General AMR,2027,1.8
+Slovenia,K. pneumoniae,2027,2.59
+Slovenia,P. aeruginosa,2027,6.62
+Slovenia,Acinetobacter,2028,0.0
+Slovenia,E. coli,2028,0.12
+Slovenia,General AMR,2028,0.87
+Slovenia,K. pneumoniae,2028,0.81
+Slovenia,P. aeruginosa,2028,6.13
+Slovenia,Acinetobacter,2029,0.0
+Slovenia,E. coli,2029,0.0
+Slovenia,General AMR,2029,0.56
+Slovenia,K. pneumoniae,2029,0.0
+Slovenia,P. aeruginosa,2029,5.62
+Slovenia,Acinetobacter,2030,0.0
+Slovenia,E. coli,2030,0.0
+Slovenia,General AMR,2030,0.51
+Slovenia,K. pneumoniae,2030,0.0
+Slovenia,P. aeruginosa,2030,5.09
+Spain,Acinetobacter,2025,19.29
+Spain,E. coli,2025,5.72
+Spain,General AMR,2025,8.58
+Spain,K. pneumoniae,2025,15.98
+Spain,P. aeruginosa,2025,6.27
+Spain,Acinetobacter,2026,13.26
+Spain,E. coli,2026,5.5
+Spain,General AMR,2026,8.05
+Spain,K. pneumoniae,2026,15.99
+Spain,P. aeruginosa,2026,4.8
+Spain,Acinetobacter,2027,6.75
+Spain,E. coli,2027,5.25
+Spain,General AMR,2027,7.45
+Spain,K. pneumoniae,2027,15.93
+Spain,P. aeruginosa,2027,3.19
+Spain,Acinetobacter,2028,0.0
+Spain,E. coli,2028,4.97
+Spain,General AMR,2028,6.8
+Spain,K. pneumoniae,2028,15.8
+Spain,P. aeruginosa,2028,1.44
+Spain,Acinetobacter,2029,0.0
+Spain,E. coli,2029,4.64
+Spain,General AMR,2029,6.4
+Spain,K. pneumoniae,2029,15.59
+Spain,P. aeruginosa,2029,0.0
+Spain,Acinetobacter,2030,0.0
+Spain,E. coli,2030,4.28
+Spain,General AMR,2030,6.11
+Spain,K. pneumoniae,2030,15.32
+Spain,P. aeruginosa,2030,0.0
+Sweden,Acinetobacter,2025,0.93
+Sweden,E. coli,2025,2.34
+Sweden,General AMR,2025,2.45
+Sweden,K. pneumoniae,2025,2.86
+Sweden,P. aeruginosa,2025,2.87
+Sweden,Acinetobacter,2026,0.69
+Sweden,E. coli,2026,2.3
+Sweden,General AMR,2026,2.4
+Sweden,K. pneumoniae,2026,2.88
+Sweden,P. aeruginosa,2026,2.63
+Sweden,Acinetobacter,2027,0.44
+Sweden,E. coli,2027,2.26
+Sweden,General AMR,2027,2.33
+Sweden,K. pneumoniae,2027,2.88
+Sweden,P. aeruginosa,2027,2.36
+Sweden,Acinetobacter,2028,0.2
+Sweden,E. coli,2028,2.2
+Sweden,General AMR,2028,2.25
+Sweden,K. pneumoniae,2028,2.88
+Sweden,P. aeruginosa,2028,2.05
+Sweden,Acinetobacter,2029,0.0
+Sweden,E. coli,2029,2.13
+Sweden,General AMR,2029,2.16
+Sweden,K. pneumoniae,2029,2.86
+Sweden,P. aeruginosa,2029,1.71
+Sweden,Acinetobacter,2030,0.0
+Sweden,E. coli,2030,2.04
+Sweden,General AMR,2030,2.06
+Sweden,K. pneumoniae,2030,2.83
+Sweden,P. aeruginosa,2030,1.33
+United Kingdom,Acinetobacter,2025,3.31
+United Kingdom,E. coli,2025,2.63
+United Kingdom,General AMR,2025,5.15
+United Kingdom,K. pneumoniae,2025,13.63
+United Kingdom,P. aeruginosa,2025,3.4
+United Kingdom,Acinetobacter,2026,3.85
+United Kingdom,E. coli,2026,2.22
+United Kingdom,General AMR,2026,5.31
+United Kingdom,K. pneumoniae,2026,15.41
+United Kingdom,P. aeruginosa,2026,3.46
+United Kingdom,Acinetobacter,2027,4.45
+United Kingdom,E. coli,2027,1.77
+United Kingdom,General AMR,2027,5.47
+United Kingdom,K. pneumoniae,2027,17.32
+United Kingdom,P. aeruginosa,2027,3.52
+United Kingdom,Acinetobacter,2028,5.1
+United Kingdom,E. coli,2028,1.27
+United Kingdom,General AMR,2028,5.64
+United Kingdom,K. pneumoniae,2028,19.37
+United Kingdom,P. aeruginosa,2028,3.58
+United Kingdom,Acinetobacter,2029,5.8
+United Kingdom,E. coli,2029,0.74
+United Kingdom,General AMR,2029,5.81
+United Kingdom,K. pneumoniae,2029,21.56
+United Kingdom,P. aeruginosa,2029,3.64
+United Kingdom,Acinetobacter,2030,6.57
+United Kingdom,E. coli,2030,0.16
+United Kingdom,General AMR,2030,5.99
+United Kingdom,K. pneumoniae,2030,23.89
+United Kingdom,P. aeruginosa,2030,3.7

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turkey AMR Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Turkey - AMR Analysis & Predictions</h1>
+            <nav class="breadcrumb">
+                <a href="index.html">← Home</a>
+            </nav>
+        </header>
+
+        <section class="turkey-section">
+            <h2>Similar Countries to Turkey</h2>
+            <p class="section-description">
+                Countries most similar to Turkey based on recent resistance profiles and antibiotic consumption
+                patterns.
+            </p>
+
+            <div id="similarCountriesChart">
+                <canvas id="similarityChart"></canvas>
+            </div>
+
+            <div class="table-wrapper">
+                <table id="similarCountriesTable">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Country</th>
+                            <th>Similarity Score</th>
+                            <th>E. coli ARM (%)</th>
+                            <th>S. aureus ARM (%)</th>
+                            <th>Antibiotic Consumption</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="turkey-section">
+            <h2>Turkey Predictions 2025-2030</h2>
+            <p class="section-description">
+                Projected antimicrobial resistance trends for Turkey based on similar countries' patterns.
+            </p>
+
+            <div class="predictions-grid">
+                <div class="prediction-card">
+                    <h3>E. coli</h3>
+                    <div class="year-comparison">
+                        <div class="year-box">
+                            <span class="year-label">2025</span>
+                            <span class="value" id="ecoli2025">-</span>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="year-box">
+                            <span class="year-label">2030</span>
+                            <span class="value" id="ecoli2030">-</span>
+                        </div>
+                    </div>
+                    <div class="change-indicator" id="ecoliChange"></div>
+                </div>
+
+                <div class="prediction-card">
+                    <h3>S. aureus</h3>
+                    <div class="year-comparison">
+                        <div class="year-box">
+                            <span class="year-label">2025</span>
+                            <span class="value" id="saureus2025">-</span>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="year-box">
+                            <span class="year-label">2030</span>
+                            <span class="value" id="saureus2030">-</span>
+                        </div>
+                    </div>
+                    <div class="change-indicator" id="saureusChange"></div>
+                </div>
+            </div>
+
+            <div id="turkeyChartContainer">
+                <canvas id="turkeyTrendChart"></canvas>
+            </div>
+
+            <div class="table-wrapper">
+                <h3>Detailed Annual Projections</h3>
+                <table id="turkeyDataTable">
+                    <thead>
+                        <tr>
+                            <th>Bacteria</th>
+                            <th>2025</th>
+                            <th>2026</th>
+                            <th>2027</th>
+                            <th>2028</th>
+                            <th>2029</th>
+                            <th>2030</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="turkey.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>European AMR Predictions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>European Countries - AMR Predictions</h1>
+            <nav class="breadcrumb">
+                <a href="index.html">← Home</a>
+            </nav>
+        </header>
+
+        <div class="filters">
+            <div class="filter-group">
+                <label for="countryFilter">Filter by Country:</label>
+                <select id="countryFilter" multiple size="8">
+                    <option value="all" selected>All Countries</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="bacteriaFilter">Filter by Bacteria:</label>
+                <select id="bacteriaFilter">
+                    <option value="all">All Bacteria</option>
+                    <option value="General AMR">General AMR (Composite)</option>
+                    <option value="E. coli">E. coli</option>
+                    <option value="K. pneumoniae">K. pneumoniae</option>
+                    <option value="P. aeruginosa">P. aeruginosa</option>
+                    <option value="Acinetobacter">Acinetobacter</option>
+                </select>
+            </div>
+
+            <button id="applyFilters" class="apply-btn">Apply Filters</button>
+            <button id="resetFilters" class="reset-btn">Reset</button>
+        </div>
+
+        <div id="chartContainer">
+            <canvas id="trendChart"></canvas>
+        </div>
+
+        <div id="statsContainer">
+            <h3>Summary Statistics (2030)</h3>
+            <div id="stats"></div>
+        </div>
+
+        <div id="tableContainer">
+            <h3>Detailed Data</h3>
+            <div class="table-wrapper">
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Bacteria</th>
+                            <th>2025</th>
+                            <th>2026</th>
+                            <th>2027</th>
+                            <th>2028</th>
+                            <th>2029</th>
+                            <th>2030</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="europe.js"></script>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>AMR Policy Decision Support – Prototype</title>
@@ -55,13 +55,11 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 2px,
-        rgba(255, 255, 255, 0.02) 2px,
-        rgba(255, 255, 255, 0.02) 4px
-      );
+      background: repeating-linear-gradient(45deg,
+          transparent,
+          transparent 2px,
+          rgba(255, 255, 255, 0.02) 2px,
+          rgba(255, 255, 255, 0.02) 4px);
       pointer-events: none;
       z-index: 0;
     }
@@ -70,6 +68,7 @@
       color: var(--accent);
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
@@ -565,7 +564,7 @@
     }
 
     .chart-bar-inner.baseline {
-      background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.4));
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.4));
     }
 
     .chart-value {
@@ -619,556 +618,553 @@
     }
   </style>
 </head>
+
 <body>
-<div class="page">
-  <header>
-    <div class="title-block">
-      <a href="index.html" class="back-link">← Back to Home</a>
-      <div class="chip">Prototype</div>
-      <h1>AMR Policy Decision Support</h1>
-      <p>
-        Explore how antimicrobial resistance (AMR) policies perform in terms of
-        total cost, QALYs and deaths for multiple pathogens. This is a
-        high-level sandbox – not a full HTA – but it mirrors Markov-style
-        cost-effectiveness thinking.
-      </p>
-    </div>
-  </header>
-
-  <main>
-    <!-- LEFT SIDE: INPUTS -->
-    <section class="left-card">
-      <div class="tab-bar">
-        <button class="tab active" data-tab="context">Context</button>
-        <button class="tab" data-tab="pathogens">Pathogens</button>
-        <button class="tab" data-tab="policies">Policies</button>
-      </div>
-
-      <!-- CONTEXT PANEL -->
-      <section class="panel" data-panel="context">
-        <div class="step-label">Step 1 · Scenario context</div>
-        <div class="panel-title">Population, horizon & WTP</div>
-        <div class="panel-subtitle">
-          Define the cohort, time horizon and willingness-to-pay (WTP).
-        </div>
-
-        <div class="field-grid">
-          <div class="field">
-            <label for="population">Population size</label>
-            <input id="population" class="input" type="number" value="100000" />
-            <div class="helper">
-              Average cohort (e.g. hospital catchment or country sample).
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="years">Time horizon (years)</label>
-            <select id="years">
-              <option value="1">1 year</option>
-              <option value="5">5 years</option>
-              <option value="10" selected>10 years</option>
-              <option value="20">20 years</option>
-            </select>
-            <div class="helper">AMR policy horizons are often 5–10 years.</div>
-          </div>
-
-          <div class="field">
-            <label for="wtp">WTP threshold (€/QALY)</label>
-            <input id="wtp" class="input" type="number" value="30000" />
-            <div class="helper">
-              Used to classify policies as cost-effective vs. not.
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="amr-burden">AMR burden setting</label>
-            <select id="amr-burden">
-              <option value="low">Low AMR</option>
-              <option value="mid">Mid AMR</option>
-              <option value="high" selected>High AMR</option>
-            </select>
-            <div class="helper">
-              Only used for presets – you can still override pathogen parameters.
-            </div>
-          </div>
-        </div>
-
-        <div class="btn-row">
-          <span class="badge-tip">
-            Not sure about WTP? Many European settings use 20–50k €/QALY.
-          </span>
-          <button class="primary-btn" id="btn-next-pathogens">
-            Next: pathogens →
-          </button>
-        </div>
-      </section>
-
-      <!-- PATHOGENS PANEL -->
-      <section class="panel hidden" data-panel="pathogens">
-        <div class="step-label">Step 2 · Pathogens</div>
-        <div class="panel-title">Add resistant pathogens</div>
-        <div class="panel-subtitle">
-          Specify incidence, case-fatality, and per-case cost / QALY loss for each pathogen.
-        </div>
-
-        <div class="field-grid">
-          <div class="field">
-            <label for="bug-name">Pathogen name</label>
-            <input id="bug-name" class="input" type="text" placeholder="e.g. CRKP" />
-          </div>
-
-          <div class="field">
-            <label for="bug-incidence">Incidence λ (per person-year)</label>
-            <input id="bug-incidence" class="input" type="number" step="0.0001" value="0.002" />
-            <div class="helper">Example: 0.002 ≈ 0.2% per year.</div>
-          </div>
-
-          <div class="field">
-            <label for="bug-cfr">Case fatality (0–1)</label>
-            <input id="bug-cfr" class="input" type="number" step="0.01" value="0.2" />
-            <div class="helper">Example: 0.2 = 20% mortality among cases.</div>
-          </div>
-
-          <div class="field">
-            <label for="bug-cost">Cost per case (€)</label>
-            <input id="bug-cost" class="input" type="number" value="20000" />
-          </div>
-
-          <div class="field">
-            <label for="bug-qaly-case">QALY loss per case</label>
-            <input id="bug-qaly-case" class="input" type="number" step="0.01" value="0.1" />
-          </div>
-
-          <div class="field">
-            <label for="bug-qaly-death">QALY loss per death</label>
-            <input id="bug-qaly-death" class="input" type="number" step="0.1" value="10" />
-            <div class="helper">Represents remaining life expectancy.</div>
-          </div>
-
-          <div class="field-full">
-            <button class="ghost-btn" id="btn-add-pathogen">+ Add pathogen</button>
-          </div>
-        </div>
-
-        <table class="mini-table" id="pathogen-table">
-          <thead>
-            <tr>
-              <th>Pathogen</th>
-              <th>λ</th>
-              <th>CFR</th>
-              <th>Cost/Case</th>
-              <th>QALY loss (case; death)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- filled by JS -->
-          </tbody>
-        </table>
-
-        <div class="btn-row">
-          <button class="secondary-btn" id="btn-back-context">← Back</button>
-          <button class="primary-btn" id="btn-next-policies">
-            Next: policies →
-          </button>
-        </div>
-      </section>
-
-      <!-- POLICIES PANEL -->
-      <section class="panel hidden" data-panel="policies">
-        <div class="step-label">Step 3 · Policies</div>
-        <div class="panel-title">Define AMR policies</div>
-        <div class="panel-subtitle">
-          Each policy acts as a % change on incidence, mortality and cost + a
-          fixed annual programme cost.
-        </div>
-
-        <div class="field-grid">
-          <div class="field">
-            <label for="pol-name">Policy name</label>
-            <input id="pol-name" class="input" type="text" placeholder="e.g. Infection control bundle" />
-          </div>
-
-          <div class="field">
-            <label for="pol-inc">Δ incidence (%)</label>
-            <input id="pol-inc" class="input" type="number" value="-20" />
-            <div class="helper">Negative for reduction (e.g. -20 = -20%).</div>
-          </div>
-
-          <div class="field">
-            <label for="pol-cfr">Δ mortality (%)</label>
-            <input id="pol-cfr" class="input" type="number" value="-30" />
-          </div>
-
-          <div class="field">
-            <label for="pol-cost">Δ cost per case (%)</label>
-            <input id="pol-cost" class="input" type="number" value="-10" />
-          </div>
-
-          <div class="field">
-            <label for="pol-program">Programme cost / year (€)</label>
-            <input id="pol-program" class="input" type="number" value="200000" />
-          </div>
-
-          <div class="field-full">
-            <button class="ghost-btn" id="btn-add-policy">+ Add policy</button>
-          </div>
-        </div>
-
-        <table class="mini-table" id="policy-table">
-          <thead>
-          <tr>
-            <th>Policy</th>
-            <th>Δ λ (%)</th>
-            <th>Δ CFR (%)</th>
-            <th>Δ cost (%)</th>
-            <th>Programme €/year</th>
-          </tr>
-          </thead>
-          <tbody>
-          <!-- filled by JS -->
-          </tbody>
-        </table>
-
-        <div class="policy-presets">
-          <h4>Policy presets</h4>
-          <p>Click to load and test commonly discussed AMR strategies.</p>
-          <div class="preset-grid" id="preset-grid">
-            <!-- JS fills -->
-          </div>
-        </div>
-
-        <div class="btn-row">
-          <button class="secondary-btn" id="btn-back-pathogens">← Back</button>
-          <button class="primary-btn" id="btn-run-sim">
-            Run simulation →
-          </button>
-        </div>
-      </section>
-    </section>
-
-    <!-- RIGHT SIDE: RESULTS -->
-    <section class="right-card">
-      <div class="right-header">
-        <h2>Results · Scenario outputs</h2>
-        <span>Costs, QALYs, deaths, ICER & incremental NMB</span>
-      </div>
-
-      <div class="results-box" id="results-box">
-        <h3>Ready to simulate</h3>
+  <div class="page">
+    <header>
+      <div class="title-block">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        <div class="chip">Prototype</div>
+        <h1>AMR Policy Decision Support</h1>
         <p>
-          Configure the scenario on the left, add at least one pathogen and one
-          policy, then click <strong>Run simulation</strong>. Results will appear here.
+          Explore how antimicrobial resistance (AMR) policies perform in terms of
+          total cost, QALYs and deaths for multiple pathogens. This is a
+          high-level sandbox – not a full HTA – but it mirrors Markov-style
+          cost-effectiveness thinking.
         </p>
       </div>
+    </header>
 
-      <div class="literature">
-        <h4>Literature & parameter support</h4>
-        <p class="lit-hint">
-          Unsure about parameters? Search Google Scholar or PubMed for burden,
-          CFRs or cost estimates. Use WHO / ECDC / OECD links for global AMR reports.
-        </p>
-        <div class="lit-row">
-          <input
-            id="search-topic"
-            class="input"
-            type="text"
-            placeholder="e.g. carbapenem-resistant Klebsiella pneumoniae hospital mortality"
-          />
-          <select id="search-target">
-            <option value="scholar">Google Scholar</option>
-            <option value="pubmed">PubMed</option>
-          </select>
-          <button class="secondary-btn" id="btn-search-literature">Search</button>
+    <main>
+      <!-- LEFT SIDE: INPUTS -->
+      <section class="left-card">
+        <div class="tab-bar">
+          <button class="tab active" data-tab="context">Context</button>
+          <button class="tab" data-tab="pathogens">Pathogens</button>
+          <button class="tab" data-tab="policies">Policies</button>
         </div>
-        <p class="lit-hint">
-          Quick links:
-          <a href="https://www.who.int/initiatives/glass" target="_blank">WHO GLASS</a> ·
-          <a href="https://www.ecdc.europa.eu/en/antimicrobial-resistance" target="_blank">ECDC AMR</a> ·
-          <a href="https://www.oecd.org/health/antimicrobial-resistance.htm" target="_blank">OECD AMR</a>
-        </p>
-      </div>
-    </section>
-  </main>
-</div>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  // ---------- TAB / PANEL HANDLING ----------
-  const tabs = document.querySelectorAll(".tab");
-  const panels = document.querySelectorAll(".panel");
+        <!-- CONTEXT PANEL -->
+        <section class="panel" data-panel="context">
+          <div class="step-label">Step 1 · Scenario context</div>
+          <div class="panel-title">Population, horizon & WTP</div>
+          <div class="panel-subtitle">
+            Define the cohort, time horizon and willingness-to-pay (WTP).
+          </div>
 
-  function activateTab(name) {
-    tabs.forEach(tab => {
-      tab.classList.toggle("active", tab.dataset.tab === name);
-    });
-    panels.forEach(panel => {
-      panel.classList.toggle("hidden", panel.dataset.panel !== name);
-    });
-  }
+          <div class="field-grid">
+            <div class="field">
+              <label for="population">Population size</label>
+              <input id="population" class="input" type="number" value="100000" />
+              <div class="helper">
+                Average cohort (e.g. hospital catchment or country sample).
+              </div>
+            </div>
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => activateTab(tab.dataset.tab));
-  });
+            <div class="field">
+              <label for="years">Time horizon (years)</label>
+              <select id="years">
+                <option value="1">1 year</option>
+                <option value="5">5 years</option>
+                <option value="10" selected>10 years</option>
+                <option value="20">20 years</option>
+              </select>
+              <div class="helper">AMR policy horizons are often 5–10 years.</div>
+            </div>
 
-  const btnNextPathogens = document.getElementById("btn-next-pathogens");
-  const btnNextPolicies = document.getElementById("btn-next-policies");
-  const btnBackContext = document.getElementById("btn-back-context");
-  const btnBackPathogens = document.getElementById("btn-back-pathogens");
+            <div class="field">
+              <label for="wtp">WTP threshold (€/QALY)</label>
+              <input id="wtp" class="input" type="number" value="30000" />
+              <div class="helper">
+                Used to classify policies as cost-effective vs. not.
+              </div>
+            </div>
 
-  if (btnNextPathogens) {
-    btnNextPathogens.addEventListener("click", () => activateTab("pathogens"));
-  }
-  if (btnNextPolicies) {
-    btnNextPolicies.addEventListener("click", () => activateTab("policies"));
-  }
-  if (btnBackContext) {
-    btnBackContext.addEventListener("click", () => activateTab("context"));
-  }
-  if (btnBackPathogens) {
-    btnBackPathogens.addEventListener("click", () => activateTab("pathogens"));
-  }
+            <div class="field">
+              <label for="amr-burden">AMR burden setting</label>
+              <select id="amr-burden">
+                <option value="low">Low AMR</option>
+                <option value="mid">Mid AMR</option>
+                <option value="high" selected>High AMR</option>
+              </select>
+              <div class="helper">
+                Only used for presets – you can still override pathogen parameters.
+              </div>
+            </div>
+          </div>
 
-  // ---------- DATA MODELS ----------
-  const pathogens = [];
-  const policies = []; // Status quo implicit
+          <div class="btn-row">
+            <span class="badge-tip">
+              Not sure about WTP? Many European settings use 20–50k €/QALY.
+            </span>
+            <button class="primary-btn" id="btn-next-pathogens">
+              Next: pathogens →
+            </button>
+          </div>
+        </section>
 
-  const pathogenTableBody = document.querySelector("#pathogen-table tbody");
-  const policyTableBody = document.querySelector("#policy-table tbody");
-  const presetGrid = document.getElementById("preset-grid");
+        <!-- PATHOGENS PANEL -->
+        <section class="panel hidden" data-panel="pathogens">
+          <div class="step-label">Step 2 · Pathogens</div>
+          <div class="panel-title">Add resistant pathogens</div>
+          <div class="panel-subtitle">
+            Specify incidence, case-fatality, and per-case cost / QALY loss for each pathogen.
+          </div>
 
-  function renderPathogens() {
-    pathogenTableBody.innerHTML = "";
-    if (pathogens.length === 0) {
-      const tr = document.createElement("tr");
-      const td = document.createElement("td");
-      td.colSpan = 5;
-      td.textContent = "No pathogens added yet.";
-      td.style.color = "#6b7280";
-      tr.appendChild(td);
-      pathogenTableBody.appendChild(tr);
-      return;
-    }
-    pathogens.forEach(p => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
+          <div class="field-grid">
+            <div class="field">
+              <label for="bug-name">Pathogen name</label>
+              <input id="bug-name" class="input" type="text" placeholder="e.g. CRKP" />
+            </div>
+
+            <div class="field">
+              <label for="bug-incidence">Incidence λ (per person-year)</label>
+              <input id="bug-incidence" class="input" type="number" step="0.0001" value="0.002" />
+              <div class="helper">Example: 0.002 ≈ 0.2% per year.</div>
+            </div>
+
+            <div class="field">
+              <label for="bug-cfr">Case fatality (0–1)</label>
+              <input id="bug-cfr" class="input" type="number" step="0.01" value="0.2" />
+              <div class="helper">Example: 0.2 = 20% mortality among cases.</div>
+            </div>
+
+            <div class="field">
+              <label for="bug-cost">Cost per case (€)</label>
+              <input id="bug-cost" class="input" type="number" value="20000" />
+            </div>
+
+            <div class="field">
+              <label for="bug-qaly-case">QALY loss per case</label>
+              <input id="bug-qaly-case" class="input" type="number" step="0.01" value="0.1" />
+            </div>
+
+            <div class="field">
+              <label for="bug-qaly-death">QALY loss per death</label>
+              <input id="bug-qaly-death" class="input" type="number" step="0.1" value="10" />
+              <div class="helper">Represents remaining life expectancy.</div>
+            </div>
+
+            <div class="field-full">
+              <button class="ghost-btn" id="btn-add-pathogen">+ Add pathogen</button>
+            </div>
+          </div>
+
+          <table class="mini-table" id="pathogen-table">
+            <thead>
+              <tr>
+                <th>Pathogen</th>
+                <th>λ</th>
+                <th>CFR</th>
+                <th>Cost/Case</th>
+                <th>QALY loss (case; death)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- filled by JS -->
+            </tbody>
+          </table>
+
+          <div class="btn-row">
+            <button class="secondary-btn" id="btn-back-context">← Back</button>
+            <button class="primary-btn" id="btn-next-policies">
+              Next: policies →
+            </button>
+          </div>
+        </section>
+
+        <!-- POLICIES PANEL -->
+        <section class="panel hidden" data-panel="policies">
+          <div class="step-label">Step 3 · Policies</div>
+          <div class="panel-title">Define AMR policies</div>
+          <div class="panel-subtitle">
+            Each policy acts as a % change on incidence, mortality and cost + a
+            fixed annual programme cost.
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="pol-name">Policy name</label>
+              <input id="pol-name" class="input" type="text" placeholder="e.g. Infection control bundle" />
+            </div>
+
+            <div class="field">
+              <label for="pol-inc">Δ incidence (%)</label>
+              <input id="pol-inc" class="input" type="number" value="-20" />
+              <div class="helper">Negative for reduction (e.g. -20 = -20%).</div>
+            </div>
+
+            <div class="field">
+              <label for="pol-cfr">Δ mortality (%)</label>
+              <input id="pol-cfr" class="input" type="number" value="-30" />
+            </div>
+
+            <div class="field">
+              <label for="pol-cost">Δ cost per case (%)</label>
+              <input id="pol-cost" class="input" type="number" value="-10" />
+            </div>
+
+            <div class="field">
+              <label for="pol-program">Programme cost / year (€)</label>
+              <input id="pol-program" class="input" type="number" value="200000" />
+            </div>
+
+            <div class="field-full">
+              <button class="ghost-btn" id="btn-add-policy">+ Add policy</button>
+            </div>
+          </div>
+
+          <table class="mini-table" id="policy-table">
+            <thead>
+              <tr>
+                <th>Policy</th>
+                <th>Δ λ (%)</th>
+                <th>Δ CFR (%)</th>
+                <th>Δ cost (%)</th>
+                <th>Programme €/year</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- filled by JS -->
+            </tbody>
+          </table>
+
+          <div class="policy-presets">
+            <h4>Policy presets</h4>
+            <p>Click to load and test commonly discussed AMR strategies.</p>
+            <div class="preset-grid" id="preset-grid">
+              <!-- JS fills -->
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="secondary-btn" id="btn-back-pathogens">← Back</button>
+            <button class="primary-btn" id="btn-run-sim">
+              Run simulation →
+            </button>
+          </div>
+        </section>
+      </section>
+
+      <!-- RIGHT SIDE: RESULTS -->
+      <section class="right-card">
+        <div class="right-header">
+          <h2>Results · Scenario outputs</h2>
+          <span>Costs, QALYs, deaths, ICER & incremental NMB</span>
+        </div>
+
+        <div class="results-box" id="results-box">
+          <h3>Ready to simulate</h3>
+          <p>
+            Configure the scenario on the left, add at least one pathogen and one
+            policy, then click <strong>Run simulation</strong>. Results will appear here.
+          </p>
+        </div>
+
+        <div class="literature">
+          <h4>Literature & parameter support</h4>
+          <p class="lit-hint">
+            Unsure about parameters? Search Google Scholar or PubMed for burden,
+            CFRs or cost estimates. Use WHO / ECDC / OECD links for global AMR reports.
+          </p>
+          <div class="lit-row">
+            <input id="search-topic" class="input" type="text"
+              placeholder="e.g. carbapenem-resistant Klebsiella pneumoniae hospital mortality" />
+            <select id="search-target">
+              <option value="scholar">Google Scholar</option>
+              <option value="pubmed">PubMed</option>
+            </select>
+            <button class="secondary-btn" id="btn-search-literature">Search</button>
+          </div>
+          <p class="lit-hint">
+            Quick links:
+            <a href="https://www.who.int/initiatives/glass" target="_blank">WHO GLASS</a> ·
+            <a href="https://www.ecdc.europa.eu/en/antimicrobial-resistance" target="_blank">ECDC AMR</a> ·
+            <a href="https://www.oecd.org/health/antimicrobial-resistance.htm" target="_blank">OECD AMR</a>
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // ---------- TAB / PANEL HANDLING ----------
+      const tabs = document.querySelectorAll(".tab");
+      const panels = document.querySelectorAll(".panel");
+
+      function activateTab(name) {
+        tabs.forEach(tab => {
+          tab.classList.toggle("active", tab.dataset.tab === name);
+        });
+        panels.forEach(panel => {
+          panel.classList.toggle("hidden", panel.dataset.panel !== name);
+        });
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener("click", () => activateTab(tab.dataset.tab));
+      });
+
+      const btnNextPathogens = document.getElementById("btn-next-pathogens");
+      const btnNextPolicies = document.getElementById("btn-next-policies");
+      const btnBackContext = document.getElementById("btn-back-context");
+      const btnBackPathogens = document.getElementById("btn-back-pathogens");
+
+      if (btnNextPathogens) {
+        btnNextPathogens.addEventListener("click", () => activateTab("pathogens"));
+      }
+      if (btnNextPolicies) {
+        btnNextPolicies.addEventListener("click", () => activateTab("policies"));
+      }
+      if (btnBackContext) {
+        btnBackContext.addEventListener("click", () => activateTab("context"));
+      }
+      if (btnBackPathogens) {
+        btnBackPathogens.addEventListener("click", () => activateTab("pathogens"));
+      }
+
+      // ---------- DATA MODELS ----------
+      const pathogens = [];
+      const policies = []; // Status quo implicit
+
+      const pathogenTableBody = document.querySelector("#pathogen-table tbody");
+      const policyTableBody = document.querySelector("#policy-table tbody");
+      const presetGrid = document.getElementById("preset-grid");
+
+      function renderPathogens() {
+        pathogenTableBody.innerHTML = "";
+        if (pathogens.length === 0) {
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.colSpan = 5;
+          td.textContent = "No pathogens added yet.";
+          td.style.color = "#6b7280";
+          tr.appendChild(td);
+          pathogenTableBody.appendChild(tr);
+          return;
+        }
+        pathogens.forEach(p => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
         <td>${p.name}</td>
         <td>${p.lambda.toFixed(4)}</td>
         <td>${p.cfr.toFixed(2)}</td>
         <td>${p.costPerCase.toLocaleString()}</td>
         <td>${p.qalyLossCase.toFixed(2)}; ${p.qalyLossDeath.toFixed(1)}</td>
       `;
-      pathogenTableBody.appendChild(tr);
-    });
-  }
+          pathogenTableBody.appendChild(tr);
+        });
+      }
 
-  function renderPolicies() {
-    policyTableBody.innerHTML = "";
-    if (policies.length === 0) {
-      const tr = document.createElement("tr");
-      const td = document.createElement("td");
-      td.colSpan = 5;
-      td.textContent = "No policies added yet (Status quo is implicit).";
-      td.style.color = "#6b7280";
-      tr.appendChild(td);
-      policyTableBody.appendChild(tr);
-      return;
-    }
-    policies.forEach(pol => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
+      function renderPolicies() {
+        policyTableBody.innerHTML = "";
+        if (policies.length === 0) {
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.colSpan = 5;
+          td.textContent = "No policies added yet (Status quo is implicit).";
+          td.style.color = "#6b7280";
+          tr.appendChild(td);
+          policyTableBody.appendChild(tr);
+          return;
+        }
+        policies.forEach(pol => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
         <td>${pol.name}</td>
         <td>${pol.incDelta}%</td>
         <td>${pol.cfrDelta}%</td>
         <td>${pol.costDelta}%</td>
         <td>${pol.programCostPerYear.toLocaleString()}</td>
       `;
-      policyTableBody.appendChild(tr);
-    });
-  }
+          policyTableBody.appendChild(tr);
+        });
+      }
 
-  // ---------- ADD PATHOGEN ----------
-  document.getElementById("btn-add-pathogen").addEventListener("click", () => {
-    const name = (document.getElementById("bug-name").value || "Pathogen " + (pathogens.length + 1)).trim();
-    const lambda = parseFloat(document.getElementById("bug-incidence").value) || 0;
-    const cfr = parseFloat(document.getElementById("bug-cfr").value) || 0;
-    const costPerCase = parseFloat(document.getElementById("bug-cost").value) || 0;
-    const qalyLossCase = parseFloat(document.getElementById("bug-qaly-case").value) || 0;
-    const qalyLossDeath = parseFloat(document.getElementById("bug-qaly-death").value) || 0;
+      // ---------- ADD PATHOGEN ----------
+      document.getElementById("btn-add-pathogen").addEventListener("click", () => {
+        const name = (document.getElementById("bug-name").value || "Pathogen " + (pathogens.length + 1)).trim();
+        const lambda = parseFloat(document.getElementById("bug-incidence").value) || 0;
+        const cfr = parseFloat(document.getElementById("bug-cfr").value) || 0;
+        const costPerCase = parseFloat(document.getElementById("bug-cost").value) || 0;
+        const qalyLossCase = parseFloat(document.getElementById("bug-qaly-case").value) || 0;
+        const qalyLossDeath = parseFloat(document.getElementById("bug-qaly-death").value) || 0;
 
-    if (lambda <= 0 || cfr < 0 || costPerCase < 0) {
-      alert("Please provide at least incidence > 0 and non-negative CFR / cost.");
-      return;
-    }
+        if (lambda <= 0 || cfr < 0 || costPerCase < 0) {
+          alert("Please provide at least incidence > 0 and non-negative CFR / cost.");
+          return;
+        }
 
-    pathogens.push({
-      name,
-      lambda,
-      cfr,
-      costPerCase,
-      qalyLossCase,
-      qalyLossDeath
-    });
-
-    renderPathogens();
-    document.getElementById("bug-name").value = "";
-  });
-
-  // ---------- ADD POLICY (MANUAL) ----------
-  document.getElementById("btn-add-policy").addEventListener("click", () => {
-    const name = (document.getElementById("pol-name").value || "Policy " + (policies.length + 1)).trim();
-    const incDelta = parseFloat(document.getElementById("pol-inc").value) || 0;
-    const cfrDelta = parseFloat(document.getElementById("pol-cfr").value) || 0;
-    const costDelta = parseFloat(document.getElementById("pol-cost").value) || 0;
-    const programCostPerYear = parseFloat(document.getElementById("pol-program").value) || 0;
-
-    policies.push({
-      name,
-      incDelta,
-      cfrDelta,
-      costDelta,
-      programCostPerYear
-    });
-
-    renderPolicies();
-    document.getElementById("pol-name").value = "";
-  });
-
-  renderPathogens();
-  renderPolicies();
-
-  // ---------- SIMPLE SIMULATION ENGINE ----------
-  function simulatePathogenComponent(N, years, lambda, cfr, costPerCase, qLossCase, qLossDeath) {
-    let N_alive = N;
-    let totalCost = 0;
-    let totalQaly = 0;
-    let totalDeaths = 0;
-
-    for (let t = 0; t < years; t++) {
-      totalQaly += N_alive; // 1 QALY / person-year
-      const cases = lambda * N_alive;
-      const deaths = cases * cfr;
-      const treatCost = cases * costPerCase;
-
-      totalCost += treatCost;
-      totalQaly -= cases * qLossCase;
-      totalQaly -= deaths * qLossDeath;
-      totalDeaths += deaths;
-
-      N_alive = Math.max(0, N_alive - deaths);
-    }
-
-    return { totalCost, totalQaly, totalDeaths };
-  }
-
-  function runScenario() {
-    const N = parseInt(document.getElementById("population").value) || 0;
-    const years = parseInt(document.getElementById("years").value) || 1;
-    const WTP = parseFloat(document.getElementById("wtp").value) || 0;
-
-    if (N <= 0 || years <= 0) {
-      alert("Please provide a valid population size and time horizon.");
-      return;
-    }
-    if (pathogens.length === 0) {
-      alert("Please add at least one pathogen.");
-      return;
-    }
-    if (policies.length === 0) {
-      alert("Please add at least one policy (Status quo is included automatically).");
-      return;
-    }
-
-    // Baseline ("Status quo")
-    const baselineResult = { totalCost: 0, totalQaly: 0, totalDeaths: 0 };
-    pathogens.forEach(bug => {
-      const r = simulatePathogenComponent(
-        N,
-        years,
-        bug.lambda,
-        bug.cfr,
-        bug.costPerCase,
-        bug.qalyLossCase,
-        bug.qalyLossDeath
-      );
-      baselineResult.totalCost += r.totalCost;
-      baselineResult.totalQaly += r.totalQaly;
-      baselineResult.totalDeaths += r.totalDeaths;
-    });
-
-    // Policies
-    const policyResults = [];
-
-    function evaluatePolicy(pol) {
-      let res = { totalCost: 0, totalQaly: 0, totalDeaths: 0 };
-      pathogens.forEach(bug => {
-        const lambda = bug.lambda * (1 + pol.incDelta / 100);
-        const cfr = bug.cfr * (1 + pol.cfrDelta / 100);
-        const costPerCase = bug.costPerCase * (1 + pol.costDelta / 100);
-
-        const r = simulatePathogenComponent(
-          N,
-          years,
+        pathogens.push({
+          name,
           lambda,
           cfr,
           costPerCase,
-          bug.qalyLossCase,
-          bug.qalyLossDeath
-        );
-        res.totalCost += r.totalCost;
-        res.totalQaly += r.totalQaly;
-        res.totalDeaths += r.totalDeaths;
+          qalyLossCase,
+          qalyLossDeath
+        });
+
+        renderPathogens();
+        document.getElementById("bug-name").value = "";
       });
-      res.totalCost += pol.programCostPerYear * years;
-      return res;
-    }
 
-    policies.forEach(pol => {
-      const res = evaluatePolicy(pol);
-      policyResults.push({ policy: pol.name, res });
-    });
+      // ---------- ADD POLICY (MANUAL) ----------
+      document.getElementById("btn-add-policy").addEventListener("click", () => {
+        const name = (document.getElementById("pol-name").value || "Policy " + (policies.length + 1)).trim();
+        const incDelta = parseFloat(document.getElementById("pol-inc").value) || 0;
+        const cfrDelta = parseFloat(document.getElementById("pol-cfr").value) || 0;
+        const costDelta = parseFloat(document.getElementById("pol-cost").value) || 0;
+        const programCostPerYear = parseFloat(document.getElementById("pol-program").value) || 0;
 
-    // ---------- BUILD RESULTS & INTERPRETATION ----------
-    const box = document.getElementById("results-box");
-    const fmt = (x, digits = 0) => x.toLocaleString(undefined, {
-      maximumFractionDigits: digits,
-      minimumFractionDigits: digits
-    });
+        policies.push({
+          name,
+          incDelta,
+          cfrDelta,
+          costDelta,
+          programCostPerYear
+        });
 
-    const base = baselineResult;
+        renderPolicies();
+        document.getElementById("pol-name").value = "";
+      });
 
-    // Pre-compute summaries for each policy
-    const summaries = policyResults.map(pr => {
-      const res = pr.res;
-      const dCost = res.totalCost - base.totalCost;
-      const dQaly = res.totalQaly - base.totalQaly;
-      const dDeaths = base.totalDeaths - res.totalDeaths; // positive = avoided
-      let ICER = null;
-      if (Math.abs(dQaly) > 1e-9) {
-        ICER = dCost / dQaly;
+      renderPathogens();
+      renderPolicies();
+
+      // ---------- SIMPLE SIMULATION ENGINE ----------
+      function simulatePathogenComponent(N, years, lambda, cfr, costPerCase, qLossCase, qLossDeath) {
+        let N_alive = N;
+        let totalCost = 0;
+        let totalQaly = 0;
+        let totalDeaths = 0;
+
+        for (let t = 0; t < years; t++) {
+          totalQaly += N_alive; // 1 QALY / person-year
+          const cases = lambda * N_alive;
+          const deaths = cases * cfr;
+          const treatCost = cases * costPerCase;
+
+          totalCost += treatCost;
+          totalQaly -= cases * qLossCase;
+          totalQaly -= deaths * qLossDeath;
+          totalDeaths += deaths;
+
+          N_alive = Math.max(0, N_alive - deaths);
+        }
+
+        return { totalCost, totalQaly, totalDeaths };
       }
-      const dNMB = dQaly * WTP - dCost;
 
-      let tag = "";
-      let tagClass = "";
-      if (dQaly > 0 && dCost < 0) {
-        tag = "Dominant";
-        tagClass = "tag-dominant";
-      } else if (dQaly > 0 && ICER !== null && ICER < WTP) {
-        tag = "Cost-effective";
-        tagClass = "tag-ce";
-      } else {
-        tag = "Not CE";
-        tagClass = "tag-notce";
-      }
+      function runScenario() {
+        const N = parseInt(document.getElementById("population").value) || 0;
+        const years = parseInt(document.getElementById("years").value) || 1;
+        const WTP = parseFloat(document.getElementById("wtp").value) || 0;
 
-      return { name: pr.policy, res, dCost, dQaly, dDeaths, ICER, dNMB, tag, tagClass };
-    });
+        if (N <= 0 || years <= 0) {
+          alert("Please provide a valid population size and time horizon.");
+          return;
+        }
+        if (pathogens.length === 0) {
+          alert("Please add at least one pathogen.");
+          return;
+        }
+        if (policies.length === 0) {
+          alert("Please add at least one policy (Status quo is included automatically).");
+          return;
+        }
 
-    let html = "";
-    html += `<h3>Scenario summary</h3>`;
-    html += `<p>Population <strong>${fmt(N)}</strong>, time horizon <strong>${years} years</strong>, WTP = <strong>${fmt(WTP)} €/QALY</strong>. Pathogens: <strong>${pathogens.map(p => p.name).join(", ")}</strong>.</p>`;
+        // Baseline ("Status quo")
+        const baselineResult = { totalCost: 0, totalQaly: 0, totalDeaths: 0 };
+        pathogens.forEach(bug => {
+          const r = simulatePathogenComponent(
+            N,
+            years,
+            bug.lambda,
+            bug.cfr,
+            bug.costPerCase,
+            bug.qalyLossCase,
+            bug.qalyLossDeath
+          );
+          baselineResult.totalCost += r.totalCost;
+          baselineResult.totalQaly += r.totalQaly;
+          baselineResult.totalDeaths += r.totalDeaths;
+        });
 
-    html += `<table class="results-table"><thead><tr>
+        // Policies
+        const policyResults = [];
+
+        function evaluatePolicy(pol) {
+          let res = { totalCost: 0, totalQaly: 0, totalDeaths: 0 };
+          pathogens.forEach(bug => {
+            const lambda = bug.lambda * (1 + pol.incDelta / 100);
+            const cfr = bug.cfr * (1 + pol.cfrDelta / 100);
+            const costPerCase = bug.costPerCase * (1 + pol.costDelta / 100);
+
+            const r = simulatePathogenComponent(
+              N,
+              years,
+              lambda,
+              cfr,
+              costPerCase,
+              bug.qalyLossCase,
+              bug.qalyLossDeath
+            );
+            res.totalCost += r.totalCost;
+            res.totalQaly += r.totalQaly;
+            res.totalDeaths += r.totalDeaths;
+          });
+          res.totalCost += pol.programCostPerYear * years;
+          return res;
+        }
+
+        policies.forEach(pol => {
+          const res = evaluatePolicy(pol);
+          policyResults.push({ policy: pol.name, res });
+        });
+
+        // ---------- BUILD RESULTS & INTERPRETATION ----------
+        const box = document.getElementById("results-box");
+        const fmt = (x, digits = 0) => x.toLocaleString(undefined, {
+          maximumFractionDigits: digits,
+          minimumFractionDigits: digits
+        });
+
+        const base = baselineResult;
+
+        // Pre-compute summaries for each policy
+        const summaries = policyResults.map(pr => {
+          const res = pr.res;
+          const dCost = res.totalCost - base.totalCost;
+          const dQaly = res.totalQaly - base.totalQaly;
+          const dDeaths = base.totalDeaths - res.totalDeaths; // positive = avoided
+          let ICER = null;
+          if (Math.abs(dQaly) > 1e-9) {
+            ICER = dCost / dQaly;
+          }
+          const dNMB = dQaly * WTP - dCost;
+
+          let tag = "";
+          let tagClass = "";
+          if (dQaly > 0 && dCost < 0) {
+            tag = "Dominant";
+            tagClass = "tag-dominant";
+          } else if (dQaly > 0 && ICER !== null && ICER < WTP) {
+            tag = "Cost-effective";
+            tagClass = "tag-ce";
+          } else {
+            tag = "Not CE";
+            tagClass = "tag-notce";
+          }
+
+          return { name: pr.policy, res, dCost, dQaly, dDeaths, ICER, dNMB, tag, tagClass };
+        });
+
+        let html = "";
+        html += `<h3>Scenario summary</h3>`;
+        html += `<p>Population <strong>${fmt(N)}</strong>, time horizon <strong>${years} years</strong>, WTP = <strong>${fmt(WTP)} €/QALY</strong>. Pathogens: <strong>${pathogens.map(p => p.name).join(", ")}</strong>.</p>`;
+
+        html += `<table class="results-table"><thead><tr>
       <th>Policy</th>
       <th>Total cost (€)</th>
       <th>Total QALYs</th>
@@ -1181,8 +1177,8 @@ document.addEventListener("DOMContentLoaded", () => {
       <th>Tag</th>
     </tr></thead><tbody>`;
 
-    // Baseline row
-    html += `<tr>
+        // Baseline row
+        html += `<tr>
       <td>Status quo</td>
       <td>${fmt(base.totalCost)}</td>
       <td>${fmt(base.totalQaly, 1)}</td>
@@ -1195,8 +1191,8 @@ document.addEventListener("DOMContentLoaded", () => {
       <td><span class="pill-tag">Reference</span></td>
     </tr>`;
 
-    summaries.forEach(s => {
-      html += `<tr>
+        summaries.forEach(s => {
+          html += `<tr>
         <td>${s.name}</td>
         <td>${fmt(s.res.totalCost)}</td>
         <td>${fmt(s.res.totalQaly, 1)}</td>
@@ -1208,207 +1204,206 @@ document.addEventListener("DOMContentLoaded", () => {
         <td>${fmt(s.dNMB, 0)}</td>
         <td><span class="pill-tag ${s.tagClass}">${s.tag}</span></td>
       </tr>`;
-    });
+        });
 
-    html += `</tbody></table>`;
+        html += `</tbody></table>`;
 
-    // Interpretation block
-    if (summaries.length > 0) {
-      let best = summaries[0];
-      summaries.forEach(s => {
-        if (s.dNMB > best.dNMB) best = s;
-      });
+        // Interpretation block
+        if (summaries.length > 0) {
+          let best = summaries[0];
+          summaries.forEach(s => {
+            if (s.dNMB > best.dNMB) best = s;
+          });
 
-      const dominant = summaries.filter(s => s.tag === "Dominant");
-      const ce = summaries.filter(s => s.tag === "Cost-effective");
-      const notCE = summaries.filter(s => s.tag === "Not CE");
+          const dominant = summaries.filter(s => s.tag === "Dominant");
+          const ce = summaries.filter(s => s.tag === "Cost-effective");
+          const notCE = summaries.filter(s => s.tag === "Not CE");
 
-      html += `<div class="interpretation">
+          html += `<div class="interpretation">
         <h4>Interpretation</h4>
         <p>At a willingness-to-pay of <strong>${fmt(WTP)} €/QALY</strong>, the policy with the highest net monetary benefit (ΔNMB) is <strong>${best.name}</strong>, with an incremental QALY gain of <strong>${fmt(best.dQaly, 2)}</strong>, an incremental cost of <strong>${fmt(best.dCost)}</strong> € and approximately <strong>${fmt(best.dDeaths, 2)}</strong> deaths avoided compared to the status quo.</p>`;
 
-      if (dominant.length > 0) {
-        html += `<p>The following policies are <strong>dominant</strong> (more QALYs at lower total cost):</p><ul>`;
-        dominant.forEach(s => {
-          html += `<li>${s.name} (Δcost ${fmt(s.dCost)} €, ΔQALY ${fmt(s.dQaly, 2)}, deaths avoided ${fmt(s.dDeaths, 2)})</li>`;
-        });
-        html += `</ul>`;
-      }
+          if (dominant.length > 0) {
+            html += `<p>The following policies are <strong>dominant</strong> (more QALYs at lower total cost):</p><ul>`;
+            dominant.forEach(s => {
+              html += `<li>${s.name} (Δcost ${fmt(s.dCost)} €, ΔQALY ${fmt(s.dQaly, 2)}, deaths avoided ${fmt(s.dDeaths, 2)})</li>`;
+            });
+            html += `</ul>`;
+          }
 
-      if (ce.length > 0) {
-        html += `<p>Additional policies that are <strong>cost-effective</strong> (ICER below the WTP threshold) include:</p><ul>`;
-        ce.forEach(s => {
-          html += `<li>${s.name} (ICER ≈ ${fmt(s.ICER, 0)} €/QALY, ΔNMB ≈ ${fmt(s.dNMB, 0)} €)</li>`;
-        });
-        html += `</ul>`;
-      }
+          if (ce.length > 0) {
+            html += `<p>Additional policies that are <strong>cost-effective</strong> (ICER below the WTP threshold) include:</p><ul>`;
+            ce.forEach(s => {
+              html += `<li>${s.name} (ICER ≈ ${fmt(s.ICER, 0)} €/QALY, ΔNMB ≈ ${fmt(s.dNMB, 0)} €)</li>`;
+            });
+            html += `</ul>`;
+          }
 
-      if (notCE.length > 0) {
-        html += `<p>Policies marked as “Not CE” provide fewer QALYs for their additional cost at this WTP threshold and would typically be deprioritised in a constrained budget setting.</p>`;
-      }
+          if (notCE.length > 0) {
+            html += `<p>Policies marked as “Not CE” provide fewer QALYs for their additional cost at this WTP threshold and would typically be deprioritised in a constrained budget setting.</p>`;
+          }
 
-      html += `<p>These outputs are intended as a high-level decision aid. For real-world adoption, parameters should be calibrated to local data (e.g. GLASS, ECDC, national cost studies) and uncertainty explored via sensitivity analysis.</p></div>`;
-    }
+          html += `<p>These outputs are intended as a high-level decision aid. For real-world adoption, parameters should be calibrated to local data (e.g. GLASS, ECDC, national cost studies) and uncertainty explored via sensitivity analysis.</p></div>`;
+        }
 
-    // Visual summary – simple bar charts for cost & deaths
-    const allForCharts = [
-      { label: "Status quo", cost: base.totalCost, deaths: base.totalDeaths, baseline: true },
-      ...summaries.map(s => ({
-        label: s.name,
-        cost: s.res.totalCost,
-        deaths: s.res.totalDeaths,
-        baseline: false
-      }))
-    ];
+        // Visual summary – simple bar charts for cost & deaths
+        const allForCharts = [
+          { label: "Status quo", cost: base.totalCost, deaths: base.totalDeaths, baseline: true },
+          ...summaries.map(s => ({
+            label: s.name,
+            cost: s.res.totalCost,
+            deaths: s.res.totalDeaths,
+            baseline: false
+          }))
+        ];
 
-    const maxCost = Math.max(...allForCharts.map(x => x.cost));
-    const maxDeaths = Math.max(...allForCharts.map(x => x.deaths));
+        const maxCost = Math.max(...allForCharts.map(x => x.cost));
+        const maxDeaths = Math.max(...allForCharts.map(x => x.deaths));
 
-    const makeWidth = (value, max) => {
-      if (max <= 0) return 10;
-      const ratio = value / max;
-      return 10 + Math.max(0, Math.min(90, ratio * 90));
-    };
+        const makeWidth = (value, max) => {
+          if (max <= 0) return 10;
+          const ratio = value / max;
+          return 10 + Math.max(0, Math.min(90, ratio * 90));
+        };
 
-    if (allForCharts.length > 1) {
-      html += `<div class="charts">
+        if (allForCharts.length > 1) {
+          html += `<div class="charts">
         <h4>Visual summary</h4>
         <div class="chart-block">
           <div class="chart-title">Total cost (€, absolute)</div>`;
-      allForCharts.forEach(x => {
-        html += `<div class="chart-row">
+          allForCharts.forEach(x => {
+            html += `<div class="chart-row">
           <span class="chart-label">${x.label}</span>
           <div class="chart-bar-outer">
             <div class="chart-bar-inner ${x.baseline ? "baseline" : ""}" style="width:${makeWidth(x.cost, maxCost)}%;"></div>
           </div>
           <span class="chart-value">${fmt(x.cost)}</span>
         </div>`;
-      });
-      html += `</div>
+          });
+          html += `</div>
         <div class="chart-block">
           <div class="chart-title">Total deaths (absolute)</div>`;
-      allForCharts.forEach(x => {
-        html += `<div class="chart-row">
+          allForCharts.forEach(x => {
+            html += `<div class="chart-row">
           <span class="chart-label">${x.label}</span>
           <div class="chart-bar-outer">
             <div class="chart-bar-inner ${x.baseline ? "baseline" : ""}" style="width:${makeWidth(x.deaths, maxDeaths)}%;"></div>
           </div>
           <span class="chart-value">${fmt(x.deaths, 1)}</span>
         </div>`;
-      });
-      html += `</div></div>`;
-    }
+          });
+          html += `</div></div>`;
+        }
 
-    box.innerHTML = html;
-  }
+        box.innerHTML = html;
+      }
 
-  document.getElementById("btn-run-sim").addEventListener("click", runScenario);
+      document.getElementById("btn-run-sim").addEventListener("click", runScenario);
 
-  // ---------- POLICY PRESETS ----------
-  const presetPolicies = [
-    {
-      label: "Risk-based + AWaRe stewardship",
-      incDelta: -15,
-      cfrDelta: -10,
-      costDelta: -5,
-      programCostPerYear: 150000,
-      desc: "Prioritises high-risk patients and AWaRe-guided prescribing."
-    },
-    {
-      label: "Infection control bundle (CRKP-focused)",
-      incDelta: -30,
-      cfrDelta: -20,
-      costDelta: -5,
-      programCostPerYear: 300000,
-      desc: "Hand hygiene, isolation, screening, environmental cleaning."
-    },
-    {
-      label: "Rapid diagnostics + ML decision support",
-      incDelta: -20,
-      cfrDelta: -25,
-      costDelta: -10,
-      programCostPerYear: 400000,
-      desc: "Faster targeted therapy and reduced inappropriate use."
-    },
-    {
-      label: "Subscription model for last-line drugs",
-      incDelta: -5,
-      cfrDelta: -15,
-      costDelta: 10,
-      programCostPerYear: 800000,
-      desc: "Delinks revenue from volume, supports access to new agents."
-    },
-    {
-      label: "Innovation & narrow-spectrum R&D",
-      incDelta: -10,
-      cfrDelta: -20,
-      costDelta: 5,
-      programCostPerYear: 600000,
-      desc: "Invests in new agents prioritising narrow-spectrum options."
-    }
-  ];
+      // ---------- POLICY PRESETS ----------
+      const presetPolicies = [
+        {
+          label: "Risk-based + AWaRe stewardship",
+          incDelta: -15,
+          cfrDelta: -10,
+          costDelta: -5,
+          programCostPerYear: 150000,
+          desc: "Prioritises high-risk patients and AWaRe-guided prescribing."
+        },
+        {
+          label: "Infection control bundle (CRKP-focused)",
+          incDelta: -30,
+          cfrDelta: -20,
+          costDelta: -5,
+          programCostPerYear: 300000,
+          desc: "Hand hygiene, isolation, screening, environmental cleaning."
+        },
+        {
+          label: "Rapid diagnostics + ML decision support",
+          incDelta: -20,
+          cfrDelta: -25,
+          costDelta: -10,
+          programCostPerYear: 400000,
+          desc: "Faster targeted therapy and reduced inappropriate use."
+        },
+        {
+          label: "Subscription model for last-line drugs",
+          incDelta: -5,
+          cfrDelta: -15,
+          costDelta: 10,
+          programCostPerYear: 800000,
+          desc: "Delinks revenue from volume, supports access to new agents."
+        },
+        {
+          label: "Innovation & narrow-spectrum R&D",
+          incDelta: -10,
+          cfrDelta: -20,
+          costDelta: 5,
+          programCostPerYear: 600000,
+          desc: "Invests in new agents prioritising narrow-spectrum options."
+        }
+      ];
 
-  function applyPresetPolicy(preset) {
-    // Fill form
-    document.getElementById("pol-name").value = preset.label;
-    document.getElementById("pol-inc").value = preset.incDelta;
-    document.getElementById("pol-cfr").value = preset.cfrDelta;
-    document.getElementById("pol-cost").value = preset.costDelta;
-    document.getElementById("pol-program").value = preset.programCostPerYear;
+      function applyPresetPolicy(preset) {
+        // Fill form
+        document.getElementById("pol-name").value = preset.label;
+        document.getElementById("pol-inc").value = preset.incDelta;
+        document.getElementById("pol-cfr").value = preset.cfrDelta;
+        document.getElementById("pol-cost").value = preset.costDelta;
+        document.getElementById("pol-program").value = preset.programCostPerYear;
 
-    // Add directly to policy list
-    policies.push({
-      name: preset.label,
-      incDelta: preset.incDelta,
-      cfrDelta: preset.cfrDelta,
-      costDelta: preset.costDelta,
-      programCostPerYear: preset.programCostPerYear
-    });
-    renderPolicies();
+        // Add directly to policy list
+        policies.push({
+          name: preset.label,
+          incDelta: preset.incDelta,
+          cfrDelta: preset.cfrDelta,
+          costDelta: preset.costDelta,
+          programCostPerYear: preset.programCostPerYear
+        });
+        renderPolicies();
 
-    // If pathogens already defined, run scenario immediately
-    if (pathogens.length > 0) {
-      runScenario();
-    }
-  }
+        // If pathogens already defined, run scenario immediately
+        if (pathogens.length > 0) {
+          runScenario();
+        }
+      }
 
-  function renderPresetPolicies() {
-    presetGrid.innerHTML = "";
-    presetPolicies.forEach(p => {
-      const card = document.createElement("div");
-      card.className = "policy-card";
-      card.innerHTML = `
+      function renderPresetPolicies() {
+        presetGrid.innerHTML = "";
+        presetPolicies.forEach(p => {
+          const card = document.createElement("div");
+          card.className = "policy-card";
+          card.innerHTML = `
         <div class="policy-card-title">${p.label}</div>
         <div class="policy-card-desc">${p.desc}</div>
       `;
-      card.addEventListener("click", () => applyPresetPolicy(p));
-      presetGrid.appendChild(card);
+          card.addEventListener("click", () => applyPresetPolicy(p));
+          presetGrid.appendChild(card);
+        });
+      }
+
+      renderPresetPolicies();
+
+      // ---------- LITERATURE SEARCH ----------
+      document.getElementById("btn-search-literature").addEventListener("click", () => {
+        const topic = document.getElementById("search-topic").value.trim();
+        const target = document.getElementById("search-target").value;
+        if (!topic) {
+          alert("Please enter a keyword or pathogen to search.");
+          return;
+        }
+        let url = "";
+        if (target === "scholar") {
+          url = "https://scholar.google.com/scholar?q=" + encodeURIComponent(topic);
+        } else if (target === "pubmed") {
+          url = "https://pubmed.ncbi.nlm.nih.gov/?term=" + encodeURIComponent(topic);
+        }
+        if (url) {
+          window.open(url, "_blank");
+        }
+      });
     });
-  }
-
-  renderPresetPolicies();
-
-  // ---------- LITERATURE SEARCH ----------
-  document.getElementById("btn-search-literature").addEventListener("click", () => {
-    const topic = document.getElementById("search-topic").value.trim();
-    const target = document.getElementById("search-target").value;
-    if (!topic) {
-      alert("Please enter a keyword or pathogen to search.");
-      return;
-    }
-    let url = "";
-    if (target === "scholar") {
-      url = "https://scholar.google.com/scholar?q=" + encodeURIComponent(topic);
-    } else if (target === "pubmed") {
-      url = "https://pubmed.ncbi.nlm.nih.gov/?term=" + encodeURIComponent(topic);
-    }
-    if (url) {
-      window.open(url, "_blank");
-    }
-  });
-});
-</script>
+  </script>
 </body>
+
 </html>
-
-

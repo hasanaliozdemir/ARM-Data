@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <title>AMR Policy Decision Support – DCM</title>
@@ -52,10 +53,10 @@
       right: 0;
       bottom: 0;
       background: repeating-linear-gradient(45deg,
-        transparent,
-        transparent 2px,
-        rgba(255, 255, 255, 0.02) 2px,
-        rgba(255, 255, 255, 0.02) 4px);
+          transparent,
+          transparent 2px,
+          rgba(255, 255, 255, 0.02) 2px,
+          rgba(255, 255, 255, 0.02) 4px);
       pointer-events: none;
       z-index: 0;
     }
@@ -669,28 +670,35 @@
       body {
         padding: 0;
       }
+
       .app {
         padding: 16px 20px 24px;
       }
+
       .layout {
         grid-template-columns: minmax(0, 1fr);
       }
+
       .results-top-grid {
         grid-template-columns: minmax(0, 1fr);
       }
+
       .policy-presets {
         grid-template-columns: minmax(0, 1fr);
       }
+
       .header-row {
         flex-direction: column;
         align-items: flex-start;
       }
+
       .lit-row {
         grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="app">
     <a href="index.html" class="back-btn">
@@ -1033,11 +1041,8 @@
             incidence, CFRs or hospital cost estimates.
           </div>
           <div class="lit-row">
-            <input
-              id="litQuery"
-              class="search-input"
-              placeholder="e.g. carbapenem-resistant Klebsiella pneumoniae BSI incidence Italy"
-            />
+            <input id="litQuery" class="search-input"
+              placeholder="e.g. carbapenem-resistant Klebsiella pneumoniae BSI incidence Italy" />
             <select id="litEngine" class="select-engine">
               <option value="scholar">Google Scholar</option>
               <option value="pubmed">PubMed</option>
@@ -1063,10 +1068,10 @@
       v === null || Number.isNaN(v)
         ? "–"
         : Intl.NumberFormat("en-GB", {
-            style: "currency",
-            currency: "EUR",
-            maximumFractionDigits: 0,
-          }).format(v);
+          style: "currency",
+          currency: "EUR",
+          maximumFractionDigits: 0,
+        }).format(v);
 
     const fmtNum = (v, digits = 2) =>
       v === null || Number.isNaN(v) ? "–" : Number(v).toFixed(digits);
@@ -1463,4 +1468,5 @@
     });
   </script>
 </body>
+
 </html>

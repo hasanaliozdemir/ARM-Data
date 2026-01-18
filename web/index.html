@@ -26,6 +26,10 @@
                 <span>Design of a Data-Driven Decision Support System for Combating the Spread of
                     Antibiotic Resistance</span>
             </a>
+            <a href="assets/Final%20Report.pdf" class="download-btn header-download" target="_blank">
+                <i class="fas fa-file-pdf"></i>
+                <span>Download Report</span>
+            </a>
         </div>
     </header>
 
@@ -36,54 +40,91 @@
             <h1 class="hero-title">Combating Antibiotic Resistance with Data</h1>
             <p class="hero-description">Data-driven projections for global health security. Explore our interactive
                 models to understand regional impact and antibiotic efficacy trends.</p>
+            <a href="assets/Final%20Report.pdf" class="download-btn hero-download" target="_blank">
+                <i class="fas fa-file-pdf"></i>
+                <span>Download Full Report</span>
+                <i class="fas fa-arrow-down"></i>
+            </a>
         </div>
 
         <!-- Feature Cards -->
         <div class="feature-cards">
-            <a href="policy_tool.html" class="feature-card">
-                <div class="card-icon orange">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" />
-                        <circle cx="12" cy="5" r="2" stroke="currentColor" stroke-width="2" />
-                        <circle cx="19" cy="12" r="2" stroke="currentColor" stroke-width="2" />
-                        <circle cx="12" cy="19" r="2" stroke="currentColor" stroke-width="2" />
-                        <circle cx="5" cy="12" r="2" stroke="currentColor" stroke-width="2" />
-                        <line x1="12" y1="7" x2="12" y2="9" stroke="currentColor" stroke-width="2" />
-                        <line x1="17" y1="12" x2="15" y2="12" stroke="currentColor" stroke-width="2" />
-                        <line x1="12" y1="17" x2="12" y2="15" stroke="currentColor" stroke-width="2" />
-                        <line x1="7" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="2" />
-                    </svg>
-                </div>
-                <h3>Run Simulation</h3>
-                <p>Interactive network model predicting pathogen spread.</p>
-                <span class="card-link">Launch Model <i class="fas fa-arrow-right"></i></span>
-            </a>
+            <!-- Simulation Group -->
+            <div class="card-group">
+                <div class="group-label">Simulations</div>
+                <div class="group-cards">
+                    <a href="policy_tool.html" class="feature-card">
+                        <div class="card-icon orange">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" />
+                                <circle cx="12" cy="5" r="2" stroke="currentColor" stroke-width="2" />
+                                <circle cx="19" cy="12" r="2" stroke="currentColor" stroke-width="2" />
+                                <circle cx="12" cy="19" r="2" stroke="currentColor" stroke-width="2" />
+                                <circle cx="5" cy="12" r="2" stroke="currentColor" stroke-width="2" />
+                                <line x1="12" y1="7" x2="12" y2="9" stroke="currentColor" stroke-width="2" />
+                                <line x1="17" y1="12" x2="15" y2="12" stroke="currentColor" stroke-width="2" />
+                                <line x1="12" y1="17" x2="12" y2="15" stroke="currentColor" stroke-width="2" />
+                                <line x1="7" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="2" />
+                            </svg>
+                        </div>
+                        <h3>Run Markov Simulation</h3>
+                        <p>Interactive network model predicting pathogen spread.</p>
+                        <span class="card-link">Launch Model <i class="fas fa-arrow-right"></i></span>
+                    </a>
 
-            <a href="europe.html" class="feature-card">
-                <div class="card-icon green">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
-                        <ellipse cx="12" cy="12" rx="4" ry="10" stroke="currentColor" stroke-width="2" />
-                        <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2" />
-                    </svg>
+                    <a href="dynamic.html" class="feature-card">
+                        <div class="card-icon orange">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 3v18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M7 12l4-4 4 4 5-5" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <circle cx="20" cy="7" r="2" stroke="currentColor" stroke-width="2" />
+                            </svg>
+                        </div>
+                        <h3>Run Dynamic Simulation</h3>
+                        <p>Dynamic compartmental model with cost-effectiveness analysis.</p>
+                        <span class="card-link">Launch DCM <i class="fas fa-arrow-right"></i></span>
+                    </a>
                 </div>
-                <h3>Europe Forecast</h3>
-                <p>Regional data analysis and resistance heatmaps.</p>
-                <span class="card-link">View Data <i class="fas fa-arrow-right"></i></span>
-            </a>
+            </div>
 
-            <a href="turkey.html" class="feature-card">
-                <div class="card-icon teal">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" />
-                        <path d="M3 9H21" stroke="currentColor" stroke-width="2" />
-                        <path d="M9 21V9" stroke="currentColor" stroke-width="2" />
-                    </svg>
+            <!-- Forecast Group -->
+            <div class="card-group">
+                <div class="group-label">Forecasts</div>
+                <div class="group-cards">
+                    <a href="europe.html" class="feature-card">
+                        <div class="card-icon green">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                                <ellipse cx="12" cy="12" rx="4" ry="10" stroke="currentColor" stroke-width="2" />
+                                <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2" />
+                            </svg>
+                        </div>
+                        <h3>Europe Forecast</h3>
+                        <p>Regional data analysis and resistance heatmaps.</p>
+                        <span class="card-link">View Data <i class="fas fa-arrow-right"></i></span>
+                    </a>
+
+                    <a href="turkey.html" class="feature-card">
+                        <div class="card-icon teal">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"
+                                    stroke-width="2" />
+                                <path d="M3 9H21" stroke="currentColor" stroke-width="2" />
+                                <path d="M9 21V9" stroke="currentColor" stroke-width="2" />
+                            </svg>
+                        </div>
+                        <h3>Turkey Forecast</h3>
+                        <p>Localized projections for clinical efficacy. Based on regional data and trends.</p>
+                        <span class="card-link">Explore Region <i class="fas fa-arrow-right"></i></span>
+                    </a>
                 </div>
-                <h3>Turkey Forecast</h3>
-                <p>Localized projections for clinical efficacy.</p>
-                <span class="card-link">Explore Region <i class="fas fa-arrow-right"></i></span>
-            </a>
+            </div>
         </div>
     </main>
 

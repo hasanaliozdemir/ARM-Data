@@ -1,0 +1,1466 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>AMR Policy Decision Support – DCM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-main: #1a1f2e;
+      --bg-card: rgba(255, 255, 255, 0.05);
+      --bg-card-hover: rgba(255, 255, 255, 0.08);
+      --accent-orange: #f97316;
+      --accent-green: #22c55e;
+      --accent-teal: #14b8a6;
+      --accent-yellow: #eab308;
+      --text-main: #ffffff;
+      --text-soft: rgba(255, 255, 255, 0.7);
+      --text-muted: rgba(255, 255, 255, 0.5);
+      --border-subtle: rgba(255, 255, 255, 0.1);
+      --danger: #ef4444;
+      --success: #22c55e;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.3);
+      --shadow-chip: 0 5px 20px rgba(0, 0, 0, 0.25);
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 0;
+      color: var(--text-main);
+      background: var(--bg-main);
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(45deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.02) 2px,
+        rgba(255, 255, 255, 0.02) 4px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .app {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: transparent;
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+      padding: 20px 40px 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Back Button */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      color: var(--accent-teal);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s;
+      margin-bottom: 20px;
+    }
+
+    .back-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-teal);
+      color: #fff;
+    }
+
+    .back-btn i {
+      font-size: 12px;
+    }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      gap: 16px;
+    }
+
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .badge-prototype {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      padding: 5px 14px;
+      align-self: flex-start;
+      background: rgba(249, 115, 22, 0.1);
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-soft);
+      max-width: 650px;
+      line-height: 1.5;
+    }
+
+    .header-tag {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-soft);
+      background: var(--bg-card);
+      font-weight: 500;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
+      gap: 24px;
+      margin-top: 10px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      padding: 20px;
+    }
+
+    .card-right {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      padding: 20px 24px;
+    }
+
+    /* Tabs (Context / Epidemiology / Policies) */
+
+    .tabs {
+      display: inline-flex;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      padding: 4px;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      border-radius: var(--radius-pill);
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      padding: 8px 16px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 200ms ease, color 200ms ease, box-shadow 200ms ease;
+      font-weight: 500;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-soft);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--accent-teal), var(--accent-green));
+      color: #fff;
+      box-shadow: var(--shadow-chip);
+    }
+
+    .step-title-kicker {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .step-title-main {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+
+    .step-subtitle {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 12px;
+    }
+
+    .form-row-full {
+      margin-top: 10px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      font-weight: 500;
+    }
+
+    .hint {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    input[type="number"],
+    select,
+    input[type="text"] {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      padding: 10px 14px;
+      font-size: 14px;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 200ms ease, box-shadow 200ms ease,
+        background-color 200ms ease;
+    }
+
+    input[type="number"]:focus,
+    input[type="text"]:focus,
+    select:focus {
+      border-color: var(--accent-teal);
+      box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.2);
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    input[type="range"] {
+      width: 100%;
+    }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .slider-value {
+      min-width: 50px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: var(--accent-teal);
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: rgba(255, 255, 255, 0.1);
+      height: 6px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      background: var(--accent-teal);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .step-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .btn-primary {
+      border-radius: 8px;
+      border: none;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      background: linear-gradient(135deg, var(--accent-teal), var(--accent-green));
+      color: #fff;
+      cursor: pointer;
+      box-shadow: var(--shadow-chip);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 200ms ease, box-shadow 200ms ease,
+        filter 200ms ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(20, 184, 166, 0.3);
+      filter: brightness(1.05);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-ghost {
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      background: transparent;
+      padding: 10px 18px;
+      font-size: 13px;
+      color: var(--text-soft);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-teal);
+      color: var(--accent-teal);
+    }
+
+    .pill-small {
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      padding: 4px 12px;
+      font-size: 11px;
+      color: var(--text-muted);
+      background: var(--bg-card);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent-teal);
+    }
+
+    .section {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .section-title {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .policy-presets {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .policy-chip {
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      font-size: 12px;
+      color: var(--text-soft);
+      cursor: pointer;
+      text-align: left;
+      box-shadow: var(--shadow-chip);
+      transition: all 0.2s ease;
+    }
+
+    .policy-chip strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text-main);
+      font-size: 13px;
+    }
+
+    .policy-chip:hover {
+      border-color: var(--accent-teal);
+      box-shadow: 0 8px 25px rgba(20, 184, 166, 0.15);
+      transform: translateY(-2px);
+      background: var(--bg-card-hover);
+    }
+
+    /* RIGHT PANEL */
+
+    .right-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+      gap: 12px;
+    }
+
+    .right-title {
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .right-sub {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-top: 4px;
+    }
+
+    .status-pill {
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-soft);
+      background: var(--bg-card);
+      font-weight: 500;
+    }
+
+    .results-top-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .result-box {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      background: rgba(0, 0, 0, 0.2);
+      padding: 16px;
+    }
+
+    .result-box h3 {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .result-label {
+      color: var(--text-muted);
+    }
+
+    .result-value {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .result-muted {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    .delta-tag {
+      margin-top: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      background: var(--bg-card);
+    }
+
+    .delta-tag.positive {
+      border-color: rgba(34, 197, 94, 0.5);
+      background: rgba(34, 197, 94, 0.15);
+      color: #86efac;
+    }
+
+    .delta-tag.negative {
+      border-color: rgba(239, 68, 68, 0.5);
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+    }
+
+    .delta-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: currentColor;
+    }
+
+    .narrative {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin-top: 16px;
+      line-height: 1.6;
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .narrative strong {
+      color: var(--accent-teal);
+      font-weight: 600;
+    }
+
+    .lit-section {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .lit-title {
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .lit-subtitle {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .lit-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 170px 100px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .search-input {
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      padding: 10px 14px;
+      font-size: 14px;
+      color: var(--text-main);
+      background: rgba(0, 0, 0, 0.3);
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-teal);
+      box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.2);
+    }
+
+    .select-engine {
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      padding: 10px 14px;
+      font-size: 14px;
+      background: rgba(0, 0, 0, 0.3);
+      color: var(--text-main);
+    }
+
+    .btn-search {
+      border-radius: 8px;
+      border: none;
+      background: linear-gradient(135deg, var(--accent-orange), #ea580c);
+      color: #fff;
+      font-size: 14px;
+      padding: 10px 16px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-search:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 20px rgba(249, 115, 22, 0.3);
+    }
+
+    .lit-links {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .lit-links a {
+      color: var(--accent-teal);
+      text-decoration: none;
+      margin-right: 16px;
+      transition: color 0.2s;
+    }
+
+    .lit-links a:hover {
+      color: var(--accent-green);
+    }
+
+    @media (max-width: 960px) {
+      body {
+        padding: 0;
+      }
+      .app {
+        padding: 16px 20px 24px;
+      }
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .results-top-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .policy-presets {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .header-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .lit-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <a href="index.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i>
+      Back to Home
+    </a>
+    <div class="header-row">
+      <div class="title-block">
+        <div class="badge-prototype">Prototype</div>
+        <h1>AMR Policy Decision Support</h1>
+        <p class="subtitle">
+          Dynamic compartmental model (DCM) plus cost-effectiveness analysis.
+          Configure scenario context, epidemiological parameters and policy effects,
+          then run the simulation to obtain total cost, QALYs, deaths and ICER.
+        </p>
+      </div>
+      <div class="header-tag">Dynamic CEA · DCM</div>
+    </div>
+
+    <div class="layout">
+      <!-- LEFT PANEL -->
+      <div class="card">
+        <div class="tabs" id="tabs">
+          <button class="tab-btn active" data-tab="context">Context</button>
+          <button class="tab-btn" data-tab="epi">Epidemiology</button>
+          <button class="tab-btn" data-tab="policy">Policies</button>
+        </div>
+
+        <!-- CONTEXT STEP -->
+        <div class="step" id="step-context">
+          <div class="step-title-kicker">Step 1 · Scenario context</div>
+          <div class="step-title-main">Population, horizon &amp; economic inputs</div>
+          <p class="step-subtitle">
+            Cohort size, time horizon, discount rate and AMR burden setting.
+            Burden presets only pre-fill incidence values in the next step;
+            you can still override them manually.
+          </p>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="pop">Population size</label>
+              <input id="pop" type="number" value="100000" min="1000" step="1000" />
+              <div class="hint">Hospital catchment, country or model cohort.</div>
+            </div>
+
+            <div class="field">
+              <label for="horizon">Time horizon (years)</label>
+              <select id="horizon">
+                <option value="1">1 year</option>
+                <option value="5">5 years</option>
+                <option value="10" selected>10 years</option>
+                <option value="20">20 years</option>
+              </select>
+              <div class="hint">Simulation length; costs and QALYs are aggregated over this horizon.</div>
+            </div>
+
+            <div class="field">
+              <label for="discount">Discount rate (%)</label>
+              <input id="discount" type="number" value="3" min="0" max="10" step="0.5" />
+              <div class="hint">Applied to both costs and QALYs (typical: 3% per year).</div>
+            </div>
+
+            <div class="field">
+              <label for="wtp">Willingness-to-pay (€/QALY)</label>
+              <input id="wtp" type="number" value="30000" step="5000" min="0" />
+              <div class="hint">Used only to classify policies as cost-effective vs. not.</div>
+            </div>
+
+            <div class="field">
+              <label for="burden">AMR burden preset</label>
+              <select id="burden">
+                <option value="low">Low AMR</option>
+                <option value="medium" selected>Medium AMR</option>
+                <option value="high">High AMR</option>
+              </select>
+              <div class="hint">
+                Pre-fills incidence and resistant CFRs in the epidemiology step.
+              </div>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <span class="hint">Tip: configure context and burden first, then move to incidence and CFR settings.</span>
+            <button class="btn-primary" id="to-epi">
+              Next: epidemiology →
+            </button>
+          </div>
+        </div>
+
+        <!-- EPIDEMIOLOGY STEP -->
+        <div class="step" id="step-epi" style="display:none;">
+          <div class="step-title-kicker">Step 2 · Epidemiology</div>
+          <div class="step-title-main">Incidence, clinical course &amp; utilities</div>
+          <p class="step-subtitle">
+            Specify baseline infection burden and clinical parameters. Burden presets set
+            starting values which you can still fine-tune.
+          </p>
+
+          <div class="section">
+            <div class="section-title">Infection incidence (per 100k population / year)</div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="inc_s">Susceptible BSI incidence</label>
+                <input id="inc_s" type="number" value="6" step="0.1" min="0" />
+                <div class="hint">Example: 6 ≈ 6 cases per 100k population per year.</div>
+              </div>
+              <div class="field">
+                <label for="inc_r">Resistant BSI incidence</label>
+                <input id="inc_r" type="number" value="2" step="0.1" min="0" />
+                <div class="hint">Higher in high-burden countries; can be &gt;5 / 100k.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">Clinical course (LOS &amp; mortality)</div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="los_s">LOS susceptible (days)</label>
+                <input id="los_s" type="number" value="8" min="1" step="0.5" />
+                <div class="hint">Average LOS for susceptible BSI (e.g. 7–10 days).</div>
+              </div>
+              <div class="field">
+                <label for="los_r">LOS resistant (days)</label>
+                <input id="los_r" type="number" value="23" min="1" step="1" />
+                <div class="hint">Longer LOS for resistant infections (e.g. 20–30 days).</div>
+              </div>
+              <div class="field">
+                <label for="mort_s">Mortality susceptible (%)</label>
+                <input id="mort_s" type="number" value="10" step="1" min="0" max="100" />
+                <div class="hint">Case fatality among susceptible infections.</div>
+              </div>
+              <div class="field">
+                <label for="mort_r">Mortality resistant (%)</label>
+                <input id="mort_r" type="number" value="35" step="1" min="0" max="100" />
+                <div class="hint">Case fatality among resistant infections (often 25–50%).</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">Costs &amp; utilities</div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="cost_is">Cost per susceptible BSI (€)</label>
+                <input id="cost_is" type="number" value="10000" step="1000" min="0" />
+                <div class="hint">Total direct medical cost for one susceptible infection.</div>
+              </div>
+              <div class="field">
+                <label for="cost_ir">Cost per resistant BSI (€)</label>
+                <input id="cost_ir" type="number" value="25000" step="1000" min="0" />
+                <div class="hint">Higher due to ICU, longer LOS and last-line drugs.</div>
+              </div>
+
+              <div class="field">
+                <label for="u_healthy">Utility: infection-free adult</label>
+                <input id="u_healthy" type="number" value="0.9" step="0.01" min="0" max="1" />
+                <div class="hint">General population HRQoL (0.85–0.95 typical).</div>
+              </div>
+              <div class="field">
+                <label for="u_post">Utility: post-infection</label>
+                <input id="u_post" type="number" value="0.65" step="0.01" min="0" max="1" />
+                <div class="hint">Persistent sequelae after severe infection.</div>
+              </div>
+
+              <div class="field">
+                <label for="u_is">Utility: acute susceptible BSI</label>
+                <input id="u_is" type="number" value="0.55" step="0.01" min="0" max="1" />
+                <div class="hint">Short-term disutility during susceptible BSI.</div>
+              </div>
+              <div class="field">
+                <label for="u_ir">Utility: acute resistant BSI</label>
+                <input id="u_ir" type="number" value="0.4" step="0.01" min="0" max="1" />
+                <div class="hint">Lower HRQoL for severe resistant sepsis.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button class="btn-ghost" id="back-context">← Back</button>
+            <button class="btn-primary" id="to-policy">Next: policies →</button>
+          </div>
+        </div>
+
+        <!-- POLICY STEP -->
+        <div class="step" id="step-policy" style="display:none;">
+          <div class="step-title-kicker">Step 3 · Policies</div>
+          <div class="step-title-main">Define AMR policies</div>
+          <p class="step-subtitle">
+            Each policy modifies antibiotic pressure and adds an annual programme cost.
+            The underlying dynamic model remains identical; only parameters change.
+          </p>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="policy_name">Policy name</label>
+              <input id="policy_name" type="text" placeholder="e.g. Risk-based protocol" />
+              <div class="hint">Used for labelling the scenario in the results panel.</div>
+            </div>
+            <div class="field">
+              <label>Antibiotic pressure reduction (%)</label>
+              <div class="slider-row">
+                <input id="ab_reduction" type="range" min="0" max="60" step="5" value="30" />
+                <div class="slider-value" id="ab_reduction_value">30%</div>
+              </div>
+              <div class="hint">Applies to κ<sub>R</sub>, α<sub>C</sub> and α<sub>I</sub> in the DCM.</div>
+            </div>
+            <div class="field">
+              <label for="prog_cost">Programme cost / year (€)</label>
+              <input id="prog_cost" type="number" value="200000" step="10000" min="0" />
+              <div class="hint">Annual fixed cost for implementing the policy.</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">Policy presets</div>
+            <p class="hint" style="margin-bottom:8px;">
+              Click to load commonly discussed AMR strategies. You can still adjust
+              values afterwards.
+            </p>
+            <div class="policy-presets">
+              <button class="policy-chip" data-preset="aware">
+                <strong>Risk-based + AWaRe stewardship</strong>
+                <span>Reduces broad-spectrum use and resistant infections.</span>
+              </button>
+              <button class="policy-chip" data-preset="infection">
+                <strong>Infection control bundle</strong>
+                <span>Hand hygiene, isolation, screening, environment.</span>
+              </button>
+              <button class="policy-chip" data-preset="digital">
+                <strong>Digital / ML decision support</strong>
+                <span>Optimised prescribing based on real-time data.</span>
+              </button>
+              <button class="policy-chip" data-preset="subscription">
+                <strong>Subscription model for last-line drugs</strong>
+                <span>High fixed cost, protects access to new agents.</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button class="btn-ghost" id="back-epi">← Back</button>
+            <button class="btn-primary" id="runBtn">
+              ▶ Run simulation
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="card-right">
+        <div class="right-header">
+          <div>
+            <div class="right-title">Results · Scenario outputs</div>
+            <div class="right-sub">
+              Ready to simulate. Configure context, epidemiology and policy, then run.
+            </div>
+          </div>
+          <div class="status-pill" id="statusLabel">Status: idle</div>
+        </div>
+
+        <div class="results-top-grid">
+          <div class="result-box">
+            <h3>Status quo</h3>
+            <div class="result-row">
+              <span class="result-label">Total cost</span>
+              <span class="result-value" id="baseCost">–</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Total QALYs</span>
+              <span class="result-value" id="baseQaly">–</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Total deaths</span>
+              <span class="result-value" id="baseDeaths">–</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Total infections</span>
+              <span class="result-value" id="baseInfections">–</span>
+            </div>
+            <div class="result-muted">Baseline with no additional policy.</div>
+          </div>
+
+          <div class="result-box">
+            <h3>Policy</h3>
+            <div class="result-row">
+              <span class="result-label">Total cost</span>
+              <span class="result-value" id="polCost">–</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Total QALYs</span>
+              <span class="result-value" id="polQaly">–</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Total deaths</span>
+              <span class="result-value" id="polDeaths">–</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Total infections</span>
+              <span class="result-value" id="polInfections">–</span>
+            </div>
+            <div class="result-muted">Includes reduced antibiotic pressure and programme cost.</div>
+          </div>
+
+          <div class="result-box">
+            <h3>Incremental (policy – status quo)</h3>
+            <div class="result-row">
+              <span class="result-label">Δ Cost</span>
+              <span class="result-value" id="deltaCost">–</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Δ QALY</span>
+              <span class="result-value" id="deltaQaly">–</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">ICER</span>
+              <span class="result-value" id="icer">–</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Deaths avoided</span>
+              <span class="result-value" id="deathsAvoided">–</span>
+            </div>
+            <div id="deltaTag" class="delta-tag">
+              <span class="delta-dot"></span>
+              <span id="deltaTagText">No cost difference yet</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="narrative" id="narrativeText">
+          Once you run a scenario, this panel will explain whether the policy is
+          <strong>dominant</strong>, <strong>cost-effective</strong> or not under the selected WTP
+          threshold. Deaths avoided come directly from the dynamic compartmental model.
+        </p>
+
+        <div class="lit-section">
+          <div class="lit-title">Literature &amp; parameter support</div>
+          <div class="lit-subtitle">
+            Unsure about parameters? Use the search box to query Google Scholar or PubMed for
+            incidence, CFRs or hospital cost estimates.
+          </div>
+          <div class="lit-row">
+            <input
+              id="litQuery"
+              class="search-input"
+              placeholder="e.g. carbapenem-resistant Klebsiella pneumoniae BSI incidence Italy"
+            />
+            <select id="litEngine" class="select-engine">
+              <option value="scholar">Google Scholar</option>
+              <option value="pubmed">PubMed</option>
+            </select>
+            <button class="btn-search" id="litSearchBtn">Search</button>
+          </div>
+          <div class="lit-links">
+            Quick links:
+            <a href="https://www.who.int/initiatives/glass" target="_blank">WHO GLASS</a>
+            <a href="https://www.ecdc.europa.eu/en/antimicrobial-resistance" target="_blank">ECDC AMR</a>
+            <a href="https://www.oecd.org/health/antimicrobial-resistance.htm" target="_blank">OECD AMR</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------- helpers ----------
+    const $ = (id) => document.getElementById(id);
+
+    const fmtEuro = (v) =>
+      v === null || Number.isNaN(v)
+        ? "–"
+        : Intl.NumberFormat("en-GB", {
+            style: "currency",
+            currency: "EUR",
+            maximumFractionDigits: 0,
+          }).format(v);
+
+    const fmtNum = (v, digits = 2) =>
+      v === null || Number.isNaN(v) ? "–" : Number(v).toFixed(digits);
+
+    // ---------- tab navigation ----------
+    const tabs = document.querySelectorAll(".tab-btn");
+    const steps = {
+      context: $("step-context"),
+      epi: $("step-epi"),
+      policy: $("step-policy"),
+    };
+
+    function setActiveTab(tabName) {
+      tabs.forEach((btn) =>
+        btn.classList.toggle("active", btn.dataset.tab === tabName)
+      );
+      Object.entries(steps).forEach(([name, el]) => {
+        el.style.display = name === tabName ? "block" : "none";
+      });
+    }
+
+    tabs.forEach((btn) =>
+      btn.addEventListener("click", () => setActiveTab(btn.dataset.tab))
+    );
+    $("to-epi").addEventListener("click", () => setActiveTab("epi"));
+    $("back-context").addEventListener("click", () => setActiveTab("context"));
+    $("to-policy").addEventListener("click", () => setActiveTab("policy"));
+    $("back-epi").addEventListener("click", () => setActiveTab("epi"));
+
+    // slider label
+    const abSlider = $("ab_reduction");
+    const abLabel = $("ab_reduction_value");
+    abSlider.addEventListener("input", () => {
+      abLabel.textContent = `${abSlider.value}%`;
+    });
+
+    // ---------- burden presets ----------
+    function applyBurdenPreset() {
+      const b = $("burden").value;
+      if (b === "low") {
+        $("inc_s").value = 4;
+        $("inc_r").value = 1;
+        $("mort_r").value = 25;
+      } else if (b === "medium") {
+        $("inc_s").value = 6;
+        $("inc_r").value = 2;
+        $("mort_r").value = 35;
+      } else {
+        // high
+        $("inc_s").value = 10;
+        $("inc_r").value = 4;
+        $("mort_r").value = 45;
+      }
+    }
+    $("burden").addEventListener("change", applyBurdenPreset);
+    // initialise once
+    applyBurdenPreset();
+
+    // ---------- policy presets ----------
+    const presets = {
+      aware: { name: "Risk-based + AWaRe stewardship", reduction: 25, cost: 150000 },
+      infection: { name: "Infection control bundle", reduction: 35, cost: 250000 },
+      digital: { name: "Digital / ML decision support", reduction: 20, cost: 300000 },
+      subscription: { name: "Subscription model for last-line drugs", reduction: 15, cost: 500000 },
+    };
+
+    document.querySelectorAll(".policy-chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const p = presets[chip.dataset.preset];
+        if (!p) return;
+        $("policy_name").value = p.name;
+        $("ab_reduction").value = p.reduction;
+        $("ab_reduction_value").textContent = `${p.reduction}%`;
+        $("prog_cost").value = p.cost;
+      });
+    });
+
+    // ---------- DCM parameter building ----------
+    function buildCommonParams() {
+      const N = Number($("pop").value || 100000);
+      const T = Number($("horizon").value || 10);
+      const discountRate = Number($("discount").value || 3) / 100;
+      const burden = $("burden").value;
+
+      const incS_per100k = Number($("inc_s").value || 0);
+      const incR_per100k = Number($("inc_r").value || 0);
+
+      const losS = Number($("los_s").value || 8);
+      const losR = Number($("los_r").value || 23);
+      const mortS = Number($("mort_s").value || 10) / 100;
+      const mortR = Number($("mort_r").value || 35) / 100;
+
+      const costIS = Number($("cost_is").value || 10000);
+      const costIR = Number($("cost_ir").value || 25000);
+
+      const uHealthy = Number($("u_healthy").value || 0.9);
+      const uPost = Number($("u_post").value || 0.65);
+      const uIS = Number($("u_is").value || 0.55);
+      const uIR = Number($("u_ir").value || 0.4);
+
+      // time conversions
+      const durSY = losS / 365;
+      const durRY = losR / 365;
+      const gammaS = 1 / durSY;
+      const gammaR = 1 / durRY;
+      const muS = mortS / durSY;
+      const muR = mortR / durRY;
+
+      // colonisation fractions based on burden
+      let fracCS, fracCR;
+      if (burden === "low") {
+        fracCS = 0.12;
+        fracCR = 0.02;
+      } else if (burden === "medium") {
+        fracCS = 0.18;
+        fracCR = 0.05;
+      } else {
+        fracCS = 0.25;
+        fracCR = 0.08;
+      }
+
+      // annual infections and progression rates
+      const annualIS = (incS_per100k / 100000) * N;
+      const annualIR = (incR_per100k / 100000) * N;
+      const rhoS = fracCS > 0 ? annualIS / (fracCS * N) : 0;
+      const rhoR = fracCR > 0 ? annualIR / (fracCR * N) : 0;
+
+      // colonisation acquisition and selection rates (rough presets)
+      let kappaS, kappaR, alphaC, alphaI, omega;
+      if (burden === "low") {
+        kappaS = 0.15;
+        kappaR = 0.01;
+        alphaC = 0.02;
+        alphaI = 0.01;
+        omega = 0.5;
+      } else if (burden === "medium") {
+        kappaS = 0.2;
+        kappaR = 0.02;
+        alphaC = 0.04;
+        alphaI = 0.02;
+        omega = 0.7;
+      } else {
+        kappaS = 0.25;
+        kappaR = 0.03;
+        alphaC = 0.06;
+        alphaI = 0.03;
+        omega = 1.0;
+      }
+
+      return {
+        N,
+        T,
+        dt: 1 / 365,
+        r: discountRate,
+        burden,
+        // infection-related parameters
+        incS_per100k,
+        incR_per100k,
+        fracCS,
+        fracCR,
+        rhoS,
+        rhoR,
+        kappaS,
+        kappaR,
+        alphaC,
+        alphaI,
+        gammaS,
+        gammaR,
+        muS,
+        muR,
+        omega,
+        // economics
+        costIS,
+        costIR,
+        progCost: 0,
+        // utilities
+        uS: uHealthy,
+        uCS: uHealthy,
+        uCR: uHealthy - 0.05,
+        uIS,
+        uIR,
+        uR: uPost,
+      };
+    }
+
+    function buildPolicyParams(common) {
+      const reduction = Number($("ab_reduction").value || 0) / 100;
+      const progCost = Number($("prog_cost").value || 0);
+
+      const params = { ...common };
+      if (reduction > 0) {
+        const factor = 1 - reduction;
+        params.kappaR = params.kappaR * factor;
+        params.alphaC = params.alphaC * factor;
+        params.alphaI = params.alphaI * factor;
+      }
+      params.progCost = progCost;
+      params.reduction = reduction;
+      return params;
+    }
+
+    // ---------- DCM + CEA simulation ----------
+    function deriv(state, p) {
+      const [S, CS, CR, IS, IR, R, D] = state;
+      const {
+        kappaS,
+        kappaR,
+        rhoS,
+        rhoR,
+        alphaC,
+        alphaI,
+        gammaS,
+        gammaR,
+        muS,
+        muR,
+        omega,
+      } = p;
+
+      const dS = -(kappaS + kappaR) * S + omega * R;
+      const dCS = kappaS * S - (rhoS + alphaC) * CS;
+      const dCR = kappaR * S + alphaC * CS - rhoR * CR;
+      const dIS = rhoS * CS - (gammaS + muS + alphaI) * IS;
+      const dIR = rhoR * CR + alphaI * IS - (gammaR + muR) * IR;
+      const dR = gammaS * IS + gammaR * IR - omega * R;
+      const dD = muS * IS + muR * IR;
+
+      return [dS, dCS, dCR, dIS, dIR, dR, dD];
+    }
+
+    function qalyRate(state, p) {
+      const [S, CS, CR, IS, IR, R] = state;
+      const { uS, uCS, uCR, uIS, uIR, uR } = p;
+      return uS * S + uCS * CS + uCR * CR + uIS * IS + uIR * IR + uR * R;
+    }
+
+    function simulate(params) {
+      const { N, T, dt, r } = params;
+      const steps = Math.floor((T + 1e-9) / dt);
+      let t = 0;
+
+      const IS0 = ((params.incS_per100k || 0) / 100000) * N * 0.05;
+      const IR0 = ((params.incR_per100k || 0) / 100000) * N * 0.05;
+      let CS = params.fracCS * N;
+      let CR = params.fracCR * N;
+      let R = 0;
+      let D = 0;
+      let S = Math.max(N - (CS + CR + IS0 + IR0 + R + D), 0);
+      let IS = IS0;
+      let IR = IR0;
+
+      let totalCost = 0;
+      let totalQaly = 0;
+      let cumIS = 0;
+      let cumIR = 0;
+
+      for (let i = 0; i < steps; i++) {
+        // new infections for cost accounting
+        const newIS = Math.max(params.rhoS * CS * dt, 0);
+        const newIRfromC = Math.max(params.rhoR * CR * dt, 0);
+        const newIRfromI = Math.max(params.alphaI * IS * dt, 0);
+        const newIR = newIRfromC + newIRfromI;
+
+        cumIS += newIS;
+        cumIR += newIR;
+
+        const costStep =
+          newIS * params.costIS + newIR * params.costIR + params.progCost * dt;
+        const qalyStep = qalyRate([S, CS, CR, IS, IR, R], params) * dt;
+
+        const discount = Math.exp(-r * t);
+        totalCost += costStep * discount;
+        totalQaly += qalyStep * discount;
+
+        const [dS, dCS, dCR, dIS, dIR, dR, dD] = deriv(
+          [S, CS, CR, IS, IR, R, D],
+          params
+        );
+        S = Math.max(S + dS * dt, 0);
+        CS = Math.max(CS + dCS * dt, 0);
+        CR = Math.max(CR + dCR * dt, 0);
+        IS = Math.max(IS + dIS * dt, 0);
+        IR = Math.max(IR + dIR * dt, 0);
+        R = Math.max(R + dR * dt, 0);
+        D = Math.max(D + dD * dt, 0);
+
+        t += dt;
+      }
+
+      return {
+        totalCost,
+        totalQaly,
+        finalDeaths: D,
+        cumInfections: cumIS + cumIR,
+      };
+    }
+
+    // ---------- results + narrative ----------
+    function updateResults(resBase, resPol, ctx, policyParams) {
+      const dCost = resPol.totalCost - resBase.totalCost;
+      const dQaly = resPol.totalQaly - resBase.totalQaly;
+      const dDeaths = resBase.finalDeaths - resPol.finalDeaths;
+      const icer =
+        Math.abs(dQaly) < 1e-9 ? null : dCost / dQaly;
+
+      $("baseCost").textContent = fmtEuro(resBase.totalCost);
+      $("baseQaly").textContent = fmtNum(resBase.totalQaly, 2);
+      $("baseDeaths").textContent = fmtNum(resBase.finalDeaths, 2);
+      $("baseInfections").textContent = fmtNum(resBase.cumInfections, 2);
+
+      $("polCost").textContent = fmtEuro(resPol.totalCost);
+      $("polQaly").textContent = fmtNum(resPol.totalQaly, 2);
+      $("polDeaths").textContent = fmtNum(resPol.finalDeaths, 2);
+      $("polInfections").textContent = fmtNum(resPol.cumInfections, 2);
+
+      $("deltaCost").textContent = fmtEuro(dCost);
+      $("deltaQaly").textContent = fmtNum(dQaly, 3);
+      $("icer").textContent = icer === null ? "∞" : fmtEuro(icer);
+      $("deathsAvoided").textContent = fmtNum(dDeaths, 2);
+
+      const tag = $("deltaTag");
+      const tagText = $("deltaTagText");
+
+      if (dCost < 0 && dQaly >= 0) {
+        tag.className = "delta-tag positive";
+        tagText.textContent = "Policy is cost-saving and improves health.";
+      } else if (dCost > 0 && dQaly > 0) {
+        tag.className = "delta-tag positive";
+        tagText.textContent = "Higher cost, but better health outcomes.";
+      } else if (dCost <= 0 && dQaly <= 0) {
+        tag.className = "delta-tag negative";
+        tagText.textContent =
+          "Policy is cheaper but does not clearly improve health.";
+      } else {
+        tag.className = "delta-tag negative";
+        tagText.textContent =
+          "Policy increases costs without clear QALY gains.";
+      }
+
+      const wtp = Number($("wtp").value || 30000);
+      let narrative = "";
+      const policyName = $("policy_name").value || "the selected policy";
+
+      if (dQaly > 0 && dCost < 0) {
+        narrative += `${policyName} dominates: it saves money and gains QALYs compared with status quo. `;
+      } else if (dQaly > 0 && icer !== null && icer <= wtp) {
+        narrative += `${policyName} is cost-effective: the ICER (${fmtEuro(
+          icer
+        )}/QALY) is below the WTP threshold of ${fmtEuro(wtp)}. `;
+      } else if (dQaly > 0 && icer !== null) {
+        narrative += `${policyName} improves health but is expensive: the ICER (${fmtEuro(
+          icer
+        )}/QALY) exceeds the WTP threshold of ${fmtEuro(wtp)}. `;
+      } else if (dQaly <= 0 && dCost <= 0) {
+        narrative += `${policyName} slightly reduces costs but does not generate clear QALY gains; acceptability depends on decision-makers' priorities. `;
+      } else {
+        narrative += `${policyName} is not attractive in this scenario, as it increases costs without clear health benefits. `;
+      }
+
+      narrative += `Over a ${ctx.T}-year horizon, the model estimates ${fmtNum(
+        dDeaths,
+        2
+      )} sepsis-related deaths averted in a cohort of ${ctx.N.toLocaleString()} adults.`;
+
+      $("narrativeText").textContent = narrative;
+    }
+
+    // ---------- run button ----------
+    $("runBtn").addEventListener("click", () => {
+      $("statusLabel").textContent = "Status: running…";
+
+      const common = buildCommonParams();
+      const policyParams = buildPolicyParams(common);
+
+      const resBase = simulate(common);
+      const resPol = simulate(policyParams);
+
+      updateResults(resBase, resPol, common, policyParams);
+
+      $("statusLabel").textContent = "Status: simulated";
+    });
+
+    // ---------- literature search ----------
+    $("litSearchBtn").addEventListener("click", () => {
+      const q = $("litQuery").value.trim();
+      if (!q) return;
+      const engine = $("litEngine").value;
+      let url;
+      if (engine === "pubmed") {
+        url = `https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(q)}`;
+      } else {
+        url = `https://scholar.google.com/scholar?q=${encodeURIComponent(q)}`;
+      }
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>

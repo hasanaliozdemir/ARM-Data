@@ -512,6 +512,43 @@ footer:not(.site-footer) {
     .turkey-section {
         padding: 20px;
     }
+
+    .predictions-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .prediction-card {
+        padding: 20px;
+    }
+
+    .year-comparison {
+        gap: 8px;
+    }
+
+    .year-box {
+        padding: 12px 16px;
+        min-width: 0;
+        flex: 1;
+    }
+
+    .prediction-card .value {
+        font-size: 1.5em;
+    }
+
+    .arrow {
+        font-size: 1.4em;
+        flex-shrink: 0;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        min-width: 600px;
+    }
 }
 
 /* Loading State */
